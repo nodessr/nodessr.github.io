@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-18947.htm" />
+    <title>将eclipse里的springboot项目打包成jar包部署到服务器上</title>
+        <meta name="description" content="在此之前我的服务器已经配置了nginx和jdk了； 步骤： 1.在pom.xml里面配置： 2.打开cmd,路径切换到项目位置（我的如下：）： 3.运行打包： mvn clean package  4" />
+        <link rel="icon" href="__ADDON__/img/nodessr/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/"><span>Node SSR</span></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">将eclipse里的springboot项目打包成jar包部署到服务器上</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p><strong>在此之前我的服务器已经配置了nginx和jdk了；</strong><br /> 步骤：<br /> 1.在pom.xml里面配置：<img decoding="async" src="http://img.555519.xyz/uploads3/20220603/f592f75937de605c5f704ccfe608c574.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"><br /> 2.打开cmd,路径切换到项目位置（我的如下：）：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/bcc9407092aa004044fd37dc97291d78.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"><br /> 3.运行打包：</p> <pre><code>mvn clean package</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/5a793ac309d786cce6df255fa98dabaf.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"><br /> 4.打包好的项目默认存放在项目的target目录里：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/be5ddb403b3779200ef50c92af49d725.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"><br /> 5.把jar包传到服务器里（我使用软件xftp）<br /> 6.用xshell连接服务器，切换到刚刚jar包保存的路径<br /> 7.使用java -jar “自己的项目jar包名”（我的是：java -jar springbootdemo-0.0.1-SNAPSHOT.jar）,来启动服务器的springboot项目<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/a7e6f932d8c18912367f2f567c0bb3de.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"></p> <p>**注意：<br /> ①在使用java命令时，要先配好java环境（下载java jdk）<em>,不然会报错：</em><br /><strong>②如果使用java -jar "jar包名"报错以下错误（解决方案：是你权限不够，你得开启root 权限（输入sudo su,然后输入密码，就成功开启root了），在运行就成功了）</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/03c6758d834dc6ca857e18a26fbd437d.jpg" alt="将eclipse里的springboot项目打包成jar包部署到服务器上"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>下一个：<a href="/news/article-18948.htm">动物疫苗的种类和制备原理是什么意思 动物疫苗的种类和制备原理是什么意思啊</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-8-23-free-node-subscribe-links.htm" title="「8月23日」最高速度21M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅节点链接">「8月23日」最高速度21M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-25-free-ssr-node.htm" title="「9月25日」最高速度20.2M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「9月25日」最高速度20.2M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-4-clash-v2ray-ss-ssr.htm" title="「9月4日」最高速度22.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接">「9月4日」最高速度22.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-18947.htm" title="将eclipse里的springboot项目打包成jar包部署到服务器上">将eclipse里的springboot项目打包成jar包部署到服务器上</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-7-free-high-speed-nodes.htm" title="「9月7日」最高速度18.6M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接">「9月7日」最高速度18.6M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-1-free-node-subscribe.htm" title="「11月1日」最高速度18.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接">「11月1日」最高速度18.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-high-speed-nodes.htm" title="「10月7日」最高速度21.4M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费机场订阅节点链接">「10月7日」最高速度21.4M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-free-subscribe-node.htm" title="「10月22日」最高速度23M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅节点链接">「10月22日」最高速度23M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-clash-v2ray-ss-ssr.htm" title="「11月20日」最高速度19.7M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅节点链接">「11月20日」最高速度19.7M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-16-clash-v2ray-ss-ssr.htm" title="「9月16日」最高速度18.5M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅节点链接">「9月16日」最高速度18.5M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
