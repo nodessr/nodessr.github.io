@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-20306.htm" />
+    <title>MySQL EXTRACT()函数中可以使用哪种复合单位？</title>
+        <meta name="description" content="MySQLEXTRACT()函数可以使用以下复合单位-   SECOND_MICROSECOND   MINUTE_MICROSECOND   HOUR_MICROSECOND   DAY_MICRO" />
+        <link rel="icon" href="__ADDON__/img/nodessr/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/"><span>Node SSR</span></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">MySQL EXTRACT()函数中可以使用哪种复合单位？</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<p>MySQL<code>EXTRACT()</code>函数可以使用以下复合单位-</p> <ul class="list-paddingleft-2"> <li> <p>SECOND_MICROSECOND</p> </li> <li> <p>MINUTE_MICROSECOND</p> </li> <li> <p>HOUR_MICROSECOND</p> </li> <li> <p>DAY_MICROSECOND</p> </li> <li> <p>MINUTE_SECOND</p> </li> <li> <p>HOUR_SECOND</p> </li> <li> <p>HOUR_MINUTE</p> </li> <li> <p>DAY_SECOND</p> </li> <li> <p>DAY_MINUTE</p> </li> <li> <p>DAY_HOUR</p> </li> <li> <p>YEAR_MONTH</p> </li> </ul> <p>这些在<code>EXTRACT()</code>方法中使用的复合单元的一些示例如下-</p> <pre>mysql&gt;&nbsp;Select&nbsp;EXTRACT(YEAR_MONTH&nbsp;from&nbsp;'2017-10-20'); +---------------------------------------+ |&nbsp;EXTRACT(YEAR_MONTH&nbsp;from&nbsp;'2017-10-20')&nbsp;| +---------------------------------------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;201710&nbsp;&nbsp;&nbsp;&nbsp;| +---------------------------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>上面的查询将从日期返回年份和月份值。</p> <pre>mysql&gt;&nbsp;Select&nbsp;EXTRACT(DAY_HOUR&nbsp;from&nbsp;'2017-10-20&nbsp;05:46:45'); +----------------------------------------------+ |&nbsp;EXTRACT(DAY_HOUR&nbsp;from&nbsp;'2017-10-20&nbsp;05:46:45')&nbsp;| +----------------------------------------------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2005&nbsp;| +----------------------------------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>上面的查询将从日期返回日期和小时值。</p> <p>必须要考虑的一件事是，上述复合单位是一组完整的值，即，如果我们将使用DAY_MINUTE，MySQL将返回DAY，HOUR和MINUTE。这意味着通常期望的任何值都将填充在开始和结束单元之间。</p> <p>例如，以下查询使用的是DAY_MICROSECOND复合单元，而MySQL返回DAY，HOUR，MINUTE，SECOND和MICROSECOND。这意味着HOUR，MINUTE和SECOND的值在DAY和MICROSECOND之间填写。</p> <pre>mysql&gt;&nbsp;Select&nbsp;EXTRACT(DAY_MICROSECOND&nbsp;from&nbsp;'2017-10-22&nbsp;05:52:45.102356'); +---------------------------------------------------------------------------+ |&nbsp;EXTRACT(DAY_MICROSECOND&nbsp;from&nbsp;'2017-10-22&nbsp;05:52:45.102356')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +---------------------------------------------------------------------------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;22055245102356&nbsp;| +---------------------------------------------------------------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-19852.htm">宠颐生官网（宠颐生团购）</a></p>
+                                        <p>下一个：<a href="/news/article-20308.htm">瑞鹏宠物医院在线咨询（瑞鹏宠物医院在线咨询免费）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-7-free-high-speed-nodes.htm" title="「9月7日」最高速度18.6M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接">「9月7日」最高速度18.6M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-10-node-share-links.htm" title="「10月10日」最高速度22.4M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅节点链接">「10月10日」最高速度22.4M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-node-share.htm" title="「11月26日」最高速度19.1M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅节点链接">「11月26日」最高速度19.1M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-high-speed-nodes.htm" title="「9月29日」最高速度19.5M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅节点链接">「9月29日」最高速度19.5M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-3-node-share-links.htm" title="「10月3日」最高速度19.2M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅节点链接">「10月3日」最高速度19.2M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-4-clash-v2ray-ss-ssr.htm" title="「9月4日」最高速度22.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接">「9月4日」最高速度22.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-25-node-share.htm" title="「8月25日」最高速度18.7M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「8月25日」最高速度18.7M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-subscribe-node.htm" title="「11月23日」最高速度22.6M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅节点链接">「11月23日」最高速度22.6M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-20-free-node-subscribe.htm" title="「9月20日」最高速度19.9M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅节点链接">「9月20日」最高速度19.9M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-10-node-share.htm" title="「9月10日」最高速度19.9M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅节点链接">「9月10日」最高速度19.9M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

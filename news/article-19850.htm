@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-19850.htm" />
+    <title>SpringBoot中Starter的作用是什么</title>
+        <meta name="description" content="目录    一、官方文档对Starter的介绍 二、Starter分类 三、以一个web开发场景为例，查看spring-boot-starter-web帮我们引入了什么      一、官方文档对Sta" />
+        <link rel="icon" href="__ADDON__/img/nodessr/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/"><span>Node SSR</span></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">SpringBoot中Starter的作用是什么</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>目录</h3> <ul> <li> <ul> <li><a href="#Starter_2" rel="nofollow">一、官方文档对Starter的介绍</a></li> <li><a href="#Starter_8" rel="nofollow">二、Starter分类</a></li> <li><a href="#webspringbootstarterweb_20" rel="nofollow">三、以一个web开发场景为例，查看spring-boot-starter-web帮我们引入了什么</a></li> </ul> </li> </ul> </div> <h2> <a id="Starter_2" rel="nofollow"></a>一、官方文档对Starter的介绍</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230119/cadd32d7cf96f219a8fce68574dbbc52.jpg" alt="SpringBoot中Starter的作用是什么"></p> <ul> <li><strong>通过官方文档里面的介绍，Starter其实就是Spring针对不用的开发场景，给我们提供的“套餐”。类似于，我们去KFC吃饭，可能有些同学们是会选择自己喜欢吃的食物去下单，但是，有些同学们对饮食并没有那么挑剔，直接就去点物美价廉的香辣鸡腿堡套餐了。而这个香辣鸡腿堡套餐，就是我们今天要介绍的Starter了。</strong></li> </ul> <h2> <a id="Starter_8" rel="nofollow"></a>二、Starter分类</h2> <p>1、Spring官方给我们提供了多种Starter的选择方式，大概50多种Starter供我们可以选择。<strong>其中，根据偏应用、产品和技术，分为三大类：</strong></p> <ul> <li> <font color="red"><strong>偏应用：</strong></font><strong>Spring Boot application starters</strong> </li> <li> <font color="red"><strong>偏产品：</strong></font><strong>Spring Boot production starters</strong> </li> <li> <font color="red"><strong>偏技术：</strong></font><strong>Spring Boot technical starters</strong> </li> </ul> <p><strong>2、下面具体的Starter，大家可以参加官方文档中的介绍：</strong></p> <ul> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters"  rel="nofollow">官方文档地址：https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters</a></li> </ul> <h2> <a id="webspringbootstarterweb_20" rel="nofollow"></a>三、以一个web开发场景为例，查看spring-boot-starter-web帮我们引入了什么</h2> <p><strong>1、springboot项目中pom.xml文件中首先引入web的Starter，如下所示：</strong></p> <pre><code class="prism language-java"> <span class="token generics"><span class="token punctuation">&lt;</span>dependency<span class="token punctuation">&gt;</span></span>     <span class="token generics"><span class="token punctuation">&lt;</span>groupId<span class="token punctuation">&gt;</span></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">&gt;</span>      <span class="token generics"><span class="token punctuation">&lt;</span>artifactId<span class="token punctuation">&gt;</span></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>web<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">&gt;</span>  <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">&gt;</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230119/67ec0daa51bf81007341db2daf26033e.jpg" alt="SpringBoot中Starter的作用是什么"></p> <p><strong>2、引入完毕之后，我们发现，陆陆续续的下载了很多jar包。通过查看maven依赖，来看看项目现在有哪些jar包被引入了进来。如下所示：</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230119/678e3e394c7be91c2ea09bc2656c3202.jpg" alt="SpringBoot中Starter的作用是什么"></p> <ul> <li><strong>通过上面的依赖图发现，web的Starter给我们提供了webmvc、web、tomcat和json的能力，那么，也就能够解释为什么我们自己没有去配置tomcat，项目却可以自己跑起来的原因了。</strong></li> </ul> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-19394.htm">1970年4月24日是什么日子（1970年4月24日出生的是什么星座）</a></p>
+                                        <p>下一个：<a href="/news/article-19852.htm">宠颐生官网（宠颐生团购）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-free-node-subscribe-links.htm" title="「11月29日」最高速度18.7M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅节点链接">「11月29日」最高速度18.7M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-clash-v2ray-ss-ssr.htm" title="「10月31日」最高速度21.8M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅节点链接">「10月31日」最高速度21.8M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-2-free-ssr-subscribe.htm" title="「9月2日」最高速度19.7M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅节点链接">「9月2日」最高速度19.7M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-19394.htm" title="1970年4月24日是什么日子（1970年4月24日出生的是什么星座）">1970年4月24日是什么日子（1970年4月24日出生的是什么星座）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-free-subscribe-node.htm" title="「10月8日」最高速度19.8M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅节点链接">「10月8日」最高速度19.8M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-20-clash-v2ray-ss-ssr.htm" title="「8月20日」最高速度18.2M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅节点链接">「8月20日」最高速度18.2M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-node-subscribe-links.htm" title="「11月19日」最高速度22.5M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「11月19日」最高速度22.5M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-node-share-links.htm" title="「11月15日」最高速度18.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接">「11月15日」最高速度18.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-21-free-subscribe-node.htm" title="「8月21日」最高速度21.1M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅节点链接">「8月21日」最高速度21.1M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-node-share-links.htm" title="「11月11日」最高速度21.4M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「11月11日」最高速度21.4M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
