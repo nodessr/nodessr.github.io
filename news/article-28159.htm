@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-28159.htm" />
+    <title>源码级别的广播与监听实现</title>
+        <meta name="description" content="前言：  近期疫情形势严峻，情形不容乐观，周末也不敢出去浪了，躲在家里“葛优躺”。闲来无事，又翻了遍Spring的源码。不翻不知道，一翻吓一跳，之前翻过的源码已经吃进了肚子里，再见亦是陌生人。  个人" />
+        <link rel="icon" href="/assets/website/img/nodessr/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/"><span>Node SSR</span></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">源码级别的广播与监听实现</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<blockquote> <p>前言：</p> </blockquote> <p>近期疫情形势严峻，情形不容乐观，周末也不敢出去浪了，躲在家里“葛优躺”。闲来无事，又翻了遍<code>Spring</code>的源码。不翻不知道，一翻吓一跳，之前翻过的源码已经吃进了肚子里，再见亦是陌生人。</p> <blockquote> <p>个人建议：为了以后能快速的捡起某个知识点，最好的方法还是形成文档，下次有遗漏的时候，直接读文档，按之前的思路捋一遍，“干净又卫生”。</p> </blockquote> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/cZuyQXj9bXD6knvs1xRPRA"  target="_blank" rel="nofollow">之前的文章</a>中我们已经介绍过如何在项目中快速上手“事件通知机制”，相信大家已经掌握了。但是我们作为高级<code>javaer</code>，要知其然，更要知其所以然。今天就带大家从源码的角度来分析一下<strong>广播与监听</strong>的底层实现原理。</p> <blockquote> <p>源码导入<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/BAHJoxkxCv8wDkjg9tjbow"  target="_blank" rel="nofollow">教程</a>也给你准备好了，不来试试吗？</p> <p>版本号：spring-framework-5.0.x</p> </blockquote> <h2 id="源码解析">源码解析</h2> <p>为了实现广播与监听的功能，<code>Spring</code>为我们提供了两个重要的函数式接口：<code>ApplicationEventPublisher</code>和<code>ApplicationListener</code>。前者的<code>publishEvent()</code>方法为我们提供了发送广播的能力；后者的<code>onApplicationEvent()</code>方法为我们提供了监听并处理事件的能力。</p> <p>接下来我们就来分析一下<code>spring</code>是如何运用这两种能力的。</p> <p>不知道大家对单例对象的初始化调用过程是否熟悉？主要调用方法流程如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9531bb4a2b226fc9d3b62b4a49411123.jpg" alt="源码级别的广播与监听实现"></p> <h4 id="发送广播">发送广播</h4> <p><code>applyBeanPostProcessorsBeforeInitialization</code>方法会去遍历该工厂创建的所有的<code>Bean</code>后置处理器，然后去依次执行后置处理器对应的<code>postProcessBeforeInitialization</code>方法。</p> <p>在该方法的实现类中我们看到了两个熟悉的类名</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/2fa4744c25880662f575dd26b1f3cd46.jpg" alt="源码级别的广播与监听实现"></p> <p>不知道大家还记得不，这俩类是在<code>beanFactory</code>的准备工作过程中添加的两个<code>bean</code>的后置处理器，所以这个地方会依次去执行这两个类中的实现方法。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/cab42f77c373b5acfaeedce00dbaf7c7.jpg" alt="源码级别的广播与监听实现"></p> <p>由于<strong>蓝框</strong>中类的实现方法是默认实现按照原样返回的给定的<code>bean</code>，所以此处不用过多分析，我们重点来看下<strong>红框</strong>中类的方法实现。</p> <p>该方法中最重要的是<code>invokeAwareInterfaces</code>方法，它的作用是检测对应的<code>bean</code>是否实现了某个<code>Aware</code>接口，如果实现了的话就去进行相关的调用。</p> <pre><code class="language-java">if (bean instanceof ApplicationEventPublisherAware) {     ((ApplicationEventPublisherAware) bean).setApplicationEventPublisher(this.applicationContext); }</code></pre> <p>我们发现在<code>invokeAwareInterfaces</code>方法中出现了如上代码，这不就是和广播发送相关的吗？所以只要我们写一个类来实现<code>ApplicationEventPublisherAware</code>接口，就可以在该<code>bean</code>中注入一个<code>ApplicationEventPublisher</code>对象，也就获得了发送广播的能力。</p> <h4 id="监听消息">监听消息</h4> <p><code>applyBeanPostProcessorsAfterInitialization</code>方法<strong>也</strong>会去遍历该工厂创建的所有的<code>Bean</code>后置处理器，然后去依次执行后置处理器对应的<code>postProcessAfterInitialization</code>方法。</p> <p>同样的，该方法的实现类中也有<code>ApplicationContextAwareProcessor</code>和<code>ApplicationListenerDetector</code>两个类，但是不同的是，前者的类的实现方法是默认实现按照原样返回的给定<code>bean</code>，而后者做了相关的处理。</p> <pre><code class="language-java">this.applicationContext.addApplicationListener((ApplicationListener&lt;?&gt;) bean);</code></pre> <p>上述代码是将实现了<code>ApplicationListener</code>接口的<code>bean</code>添加到监听器列表中，最终是保存在<code>AbstractApplicationEventMulticaster</code>的成员变量<code>defaultRetriever</code>的集合<code>applicationListeners</code>中。</p> <blockquote> <p>猜想：当发送广播消息时，就直接找到集合中的这些监听器，然后调用每个监听器的<code>onApplicationEvent</code>方法完成事件的处理。</p> </blockquote> <h4 id="案例分析">案例分析</h4> <p>在<code>refresh()</code>的<code>finishRefresh()</code>方法中，</p> <pre><code class="language-java">publishEvent(new ContextRefreshedEvent(this));</code></pre> <p>发送一条事件类型为<code>ContextRefreshedEvent</code>的广播消息，用来代表<code>Spring</code>容器初始化结束。通过分析发现，该方法中最主要的就是如下代码：</p> <pre><code class="language-java">//真正的广播交给 applicationEventMulticaster 来完成 getApplicationEventMulticaster().multicastEvent(applicationEvent, eventType);</code></pre> <blockquote> <p><code>refresh()</code>的<code>initApplicationEventMulticaster()</code>将<code>applicationEventMulticaster</code>初始化为<code>SimpleApplicationEventMulticaster</code></p> </blockquote> <p>在实现类<code>SimpleApplicationEventMulticaster</code>的方法中，会找到已注册的<code>ApplicationListener</code>列表，然后分别调用<code>invokeListener</code>方法（将监听和事件作为参数传到方法并执行的过程就是发送广播的过程）。</p> <p>底层调用的是<code>listener.onApplicationEvent(event);</code>方法，也就是各个监听实现类单独处理广播消息的逻辑。</p> <h4 id="消息与监听绑定">消息与监听绑定</h4> <p>看到这儿，你是不是已经发现了：消息类型和监听器的绑定发生在广播过程中。接下来就让我们去一探究竟</p> <p>我们看一下<code>multicastEvent()</code>方法中的<code>getApplicationListeners(event, type)</code>方法。</p> <p>在该方法中，用到了<code>ConcurrentHashMap</code>类型的缓存<code>retrieverCache</code>，所以每种类型的事件在广播的时候会触发<strong>一次</strong>绑定操作。它的<strong>key</strong>由事件的来源和类型确定，它的<strong>value</strong>中就包含了由事件来源和类型所确定的所有监听列表。</p> <p>其中绑定的逻辑就出现在<code>retrieveApplicationListeners</code>方法中，大家可以去源码中查看。</p> <h2 id="实战教学">实战教学</h2> <p>纸上得来终觉浅，绝知此事要躬行。为了更好地理解广播与监听的流程，我们当然得用实战来加以辅佐！</p> <h4 id="自定义事件">自定义事件</h4> <pre><code class="language-java">public class MyEvent extends ApplicationContextEvent {     public MyEvent(ApplicationContext source) {         super(source);     } }</code></pre> <h4 id="自定义广播">自定义广播</h4> <pre><code class="language-java">@Component public class MyPublisher implements ApplicationEventPublisherAware, ApplicationContextAware {  	private ApplicationEventPublisher applicationEventPublisher;  	private ApplicationContext applicationContext;  	@Override 	public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) { 		this.applicationEventPublisher = applicationEventPublisher; 	}  	@Override 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException { 		this.applicationContext = applicationContext; 	}  	//发送广播消息 	public void publishEvent(){ 		System.out.println("我要开始发送消息了。。。"); 		MyEvent myEvent = new MyEvent(applicationContext); 		applicationEventPublisher.publishEvent(myEvent); 	} }</code></pre> <p><code>MyPublisher</code>实现了<code>ApplicationEventPublisherAware</code>接口 ，在<code>spring</code>初始化（见上文中的<code>invokeAwareInterfaces</code>）的时候会回调<code>setApplicationEventPublisher</code>方法，获取到初始化（添加<code>bean</code>后置处理器<code>ApplicationContextAwareProcessor</code>）时的<code>AbstractApplicationContext</code>，而<code>AbstractApplicationContext</code>又间接实现了<code>ApplicationEventPublisher</code>而获得发送能力。真正执行的是<code>AbstractApplicationContext</code> 类中的<code>publishEvent</code> 方法。</p> <h4 id="自定义监听">自定义监听</h4> <pre><code class="language-java">@Component public class MyEventListener implements ApplicationListener&lt;MyEvent&gt; {      @Override     public void onApplicationEvent(MyEvent event) {         System.out.println("我监听到你的消息了");     } }</code></pre> <p><code>MyEventListener</code>实现了<code>ApplicationListener</code>接口，在<code>spring</code>初始化（见上文中的<code>addApplicationListener</code>）的时候会添加到<code>applicationListeners</code>中，在执行<code>publishEvent</code> 方法时就会走<code>MyEventListener</code>中的<code>onApplicationEvent</code>方法。</p> <h4 id="客户端">客户端</h4> <pre><code class="language-java">@RestController @RequestMapping("/demo") public class DemoTest {      @Autowired     private MyPublisher myPublisher;      @RequestMapping("/test")     public void test() {         myPublisher.publishEvent();     } }</code></pre> <p>访问<code>127.0.0.1:8008/demo/test</code>就可以发送广播了，发送与监听内容如下：</p> <pre><code class="language-xml">我要开始发送消息了。。。 我监听到你的消息了</code></pre> <p>看到这儿，相信你己经完全掌握了广播与监听的精髓了，赶快实践起来吧。阿Q将持续更新<code>java</code>实战方面的文章，感兴趣的可以关注下，也可以来<strong>技术群</strong>讨论问题呦！</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-27700.htm">广州狗狗用品批发市场（广州哪里批发宠物用品）</a></p>
+                                        <p>下一个：<a href="/news/article-28160.htm">自己买疫苗去宠物店打多少钱（自己买疫苗去宠物店打多少钱啊）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-30-free-high-speed-nodes.htm" title="「9月30日」最高速度18.5M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「9月30日」最高速度18.5M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-3-free-node-subscribe-links.htm" title="「9月3日」最高速度20.4M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅节点链接">「9月3日」最高速度20.4M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-14-node-share.htm" title="「10月14日」最高速度19.9M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅节点链接">「10月14日」最高速度19.9M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-21662.htm" title="宠物疫苗可以带上火车吗（宠物用疫苗可以带上高铁吗）">宠物疫苗可以带上火车吗（宠物用疫苗可以带上高铁吗）</a></li>
+                        <li class="py-2"><a href="/news/article-23530.htm" title="北京宠物乐园有楼层限制吗（北京最大的宠物乐园在哪里）">北京宠物乐园有楼层限制吗（北京最大的宠物乐园在哪里）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-8-free-node-subscribe.htm" title="「9月8日」最高速度22.4M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅节点链接">「9月8日」最高速度22.4M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-22-free-ssr-subscribe.htm" title="「8月22日」最高速度22.3M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费机场订阅节点链接">「8月22日」最高速度22.3M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-26761.htm" title="动物医院节目介绍（动物医院的纪录片）">动物医院节目介绍（动物医院的纪录片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-19-clash-meta-windows.htm" title="「8月19日」最高速度20.6M/S，2024年Node SSR每天更新免费机场订阅节点链接">「8月19日」最高速度20.6M/S，2024年Node SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe-links.htm" title="「12月1日」最高速度19.6M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「12月1日」最高速度19.6M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
