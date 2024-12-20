@@ -5,7 +5,7 @@
         <link rel="canonical" href="https://nodessr.github.io/news/article-20306.htm" />
     <title>MySQL EXTRACT()函数中可以使用哪种复合单位？</title>
         <meta name="description" content="MySQLEXTRACT()函数可以使用以下复合单位-   SECOND_MICROSECOND   MINUTE_MICROSECOND   HOUR_MICROSECOND   DAY_MICRO" />
-        <link rel="icon" href="__ADDON__/img/nodessr/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/nodessr/favicon.ico" type="image/x-icon"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
     <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
     <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
-    
-<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -69,7 +68,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<p>MySQL<code>EXTRACT()</code>函数可以使用以下复合单位-</p> <ul class="list-paddingleft-2"> <li> <p>SECOND_MICROSECOND</p> </li> <li> <p>MINUTE_MICROSECOND</p> </li> <li> <p>HOUR_MICROSECOND</p> </li> <li> <p>DAY_MICROSECOND</p> </li> <li> <p>MINUTE_SECOND</p> </li> <li> <p>HOUR_SECOND</p> </li> <li> <p>HOUR_MINUTE</p> </li> <li> <p>DAY_SECOND</p> </li> <li> <p>DAY_MINUTE</p> </li> <li> <p>DAY_HOUR</p> </li> <li> <p>YEAR_MONTH</p> </li> </ul> <p>这些在<code>EXTRACT()</code>方法中使用的复合单元的一些示例如下-</p> <pre>mysql&gt;&nbsp;Select&nbsp;EXTRACT(YEAR_MONTH&nbsp;from&nbsp;'2017-10-20'); +---------------------------------------+ |&nbsp;EXTRACT(YEAR_MONTH&nbsp;from&nbsp;'2017-10-20')&nbsp;| +---------------------------------------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;201710&nbsp;&nbsp;&nbsp;&nbsp;| +---------------------------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>上面的查询将从日期返回年份和月份值。</p> <pre>mysql&gt;&nbsp;Select&nbsp;EXTRACT(DAY_HOUR&nbsp;from&nbsp;'2017-10-20&nbsp;05:46:45'); +----------------------------------------------+ |&nbsp;EXTRACT(DAY_HOUR&nbsp;from&nbsp;'2017-10-20&nbsp;05:46:45')&nbsp;| +----------------------------------------------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2005&nbsp;| +----------------------------------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>上面的查询将从日期返回日期和小时值。</p> <p>必须要考虑的一件事是，上述复合单位是一组完整的值，即，如果我们将使用DAY_MINUTE，MySQL将返回DAY，HOUR和MINUTE。这意味着通常期望的任何值都将填充在开始和结束单元之间。</p> <p>例如，以下查询使用的是DAY_MICROSECOND复合单元，而MySQL返回DAY，HOUR，MINUTE，SECOND和MICROSECOND。这意味着HOUR，MINUTE和SECOND的值在DAY和MICROSECOND之间填写。</p> <pre>mysql&gt;&nbsp;Select&nbsp;EXTRACT(DAY_MICROSECOND&nbsp;from&nbsp;'2017-10-22&nbsp;05:52:45.102356'); +---------------------------------------------------------------------------+ |&nbsp;EXTRACT(DAY_MICROSECOND&nbsp;from&nbsp;'2017-10-22&nbsp;05:52:45.102356')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +---------------------------------------------------------------------------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;22055245102356&nbsp;| +---------------------------------------------------------------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>MySQL<code>EXTRACT()</code>函数可以使用以下复合单位-</p> <ul class="list-paddingleft-2"> <li> <p>SECOND_MICROSECOND</p> </li> <li> <p>MINUTE_MICROSECOND</p> </li> <li> <p>HOUR_MICROSECOND</p> </li> <li> <p>DAY_MICROSECOND</p> </li> <li> <p>MINUTE_SECOND</p> </li> <li> <p>HOUR_SECOND</p> </li> <li> <p>HOUR_MINUTE</p> </li> <li> <p>DAY_SECOND</p> </li> <li> <p>DAY_MINUTE</p> </li> <li> <p>DAY_HOUR</p> </li> <li> <p>YEAR_MONTH</p> </li> </ul> <p>这些在<code>EXTRACT()</code>方法中使用的复合单元的一些示例如下-</p> <pre>mysql&gt;&nbsp;Select&nbsp;EXTRACT(YEAR_MONTH&nbsp;from&nbsp;'2017-10-20'); +---------------------------------------+ |&nbsp;EXTRACT(YEAR_MONTH&nbsp;from&nbsp;'2017-10-20')&nbsp;| +---------------------------------------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;201710&nbsp;&nbsp;&nbsp;&nbsp;| +---------------------------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>上面的查询将从日期返回年份和月份值。</p> <pre>mysql&gt;&nbsp;Select&nbsp;EXTRACT(DAY_HOUR&nbsp;from&nbsp;'2017-10-20&nbsp;05:46:45'); +----------------------------------------------+ |&nbsp;EXTRACT(DAY_HOUR&nbsp;from&nbsp;'2017-10-20&nbsp;05:46:45')&nbsp;| +----------------------------------------------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2005&nbsp;| +----------------------------------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>上面的查询将从日期返回日期和小时值。</p> <p>必须要考虑的一件事是，上述复合单位是一组完整的值，即，如果我们将使用DAY_MINUTE，MySQL将返回DAY，HOUR和MINUTE。这意味着通常期望的任何值都将填充在开始和结束单元之间。</p> <p>例如，以下查询使用的是DAY_MICROSECOND复合单元，而MySQL返回DAY，HOUR，MINUTE，SECOND和MICROSECOND。这意味着HOUR，MINUTE和SECOND的值在DAY和MICROSECOND之间填写。</p> <pre>mysql&gt;&nbsp;Select&nbsp;EXTRACT(DAY_MICROSECOND&nbsp;from&nbsp;'2017-10-22&nbsp;05:52:45.102356'); +---------------------------------------------------------------------------+ |&nbsp;EXTRACT(DAY_MICROSECOND&nbsp;from&nbsp;'2017-10-22&nbsp;05:52:45.102356')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +---------------------------------------------------------------------------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;22055245102356&nbsp;| +---------------------------------------------------------------------------+ 1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-19852.htm">宠颐生官网（宠颐生团购）</a></p>
                                         <p>下一个：<a href="/news/article-20308.htm">瑞鹏宠物医院在线咨询（瑞鹏宠物医院在线咨询免费）</a></p>
@@ -82,16 +82,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-5-free-high-speed-nodes.htm" title="「10月5日」最高速度21M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「10月5日」最高速度21M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-free-node-subscribe-links.htm" title="「10月12日」最高速度21.3M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费机场订阅节点链接">「10月12日」最高速度21.3M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-6-free-subscribe-node.htm" title="「10月6日」最高速度20.4M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅节点链接">「10月6日」最高速度20.4M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-high-speed-nodes.htm" title="「9月29日」最高速度19.5M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅节点链接">「9月29日」最高速度19.5M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-9-free-node-subscribe.htm" title="「9月9日」最高速度18.7M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅节点链接">「9月9日」最高速度18.7M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-14-free-ssr-subscribe.htm" title="「11月14日」最高速度21M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅节点链接">「11月14日」最高速度21M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-19392.htm" title="上海流浪宠物领养网站（上海流浪宠物救助中心）">上海流浪宠物领养网站（上海流浪宠物救助中心）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-node-share.htm" title="「12月18日」最高速度21.2M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅节点链接">「12月18日」最高速度21.2M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-21-free-subscribe-node.htm" title="「8月21日」最高速度21.1M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅节点链接">「8月21日」最高速度21.1M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-24908.htm" title="数据结构-有向无环图的拓扑排序（拓扑排序的简单应用）_在线工具">数据结构-有向无环图的拓扑排序（拓扑排序的简单应用）_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-4-clash-v2ray-ss-ssr.htm" title="「9月4日」最高速度22.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接">「9月4日」最高速度22.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-21-free-ssr-node.htm" title="「9月21日」最高速度21.2M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接">「9月21日」最高速度21.2M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-clash-v2ray-ss-ssr.htm" title="「12月14日」最高速度19.5M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅节点链接">「12月14日」最高速度19.5M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费机场订阅节点链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-8-26-free-ssr-subscribe.htm" title="「8月26日」最高速度20.8M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅节点链接">「8月26日」最高速度20.8M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-ssr-subscribe.htm" title="「11月6日」最高速度18.6M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅节点链接">「11月6日」最高速度18.6M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-node-subscribe-links.htm" title="「11月19日」最高速度22.5M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「11月19日」最高速度22.5M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-19-node-share-links.htm" title="「9月19日」最高速度20.9M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「9月19日」最高速度20.9M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-free-high-speed-nodes.htm" title="「10月15日」最高速度18M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅节点链接">「10月15日」最高速度18M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-21662.htm" title="宠物疫苗可以带上火车吗（宠物用疫苗可以带上高铁吗）">宠物疫苗可以带上火车吗（宠物用疫苗可以带上高铁吗）</a></li>
                     </ul>
     </div>
 </div>
@@ -103,7 +103,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -131,6 +131,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                         Node SSR节点订阅官网 版权所有
                         <br />
                         Powered by WordPress
