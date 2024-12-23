@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-29551.htm" />
+    <title>使用vscode搭建javaweb项目</title>
+        <meta name="description" content="使用vscode搭建javaweb项目  工具准备 创建web项目 运行项目    jdk, maven, tomcat9, vscode; 上述软件的安装配置在百度就能找到很多教程, 所以此处不详述" />
+        <link rel="icon" href="/assets/website/img/nodessr/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/"><span>Node SSR</span></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">使用vscode搭建javaweb项目</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>使用vscode搭建javaweb项目</h3> <ul> <li><a href="#_2" rel="nofollow">工具准备</a></li> <li><a href="#web_26" rel="nofollow">创建web项目</a></li> <li><a href="#_60" rel="nofollow">运行项目</a></li> </ul> </div> </h1> <p>jdk, maven, tomcat9, vscode;</p> <p>上述软件的安装配置在百度就能找到很多教程, 所以此处不详述.</p> <p>(jdk使用1.8以上版本的就行, tomcat的话最好用9, 10的话由于httpservlet类的包名修改了所以会出现一些不兼容的错误导致运行失败,剩下两个使用哪个版本都可以).</p> <p>由于vscode不能直接创建javaweb项目, 所以使用maven的webapp项目;</p> <p>vscode需要下载的插件如图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/7fc53ae72d4a4324087aacf7b22d4cea.jpg" alt="使用vscode搭建javaweb项目"><img decoding="async" src="http://img.555519.xyz/uploads/20221201/ce8509a40069aa38e90512aea48402af.jpg" alt="使用vscode搭建javaweb项目"><img decoding="async" src="http://img.555519.xyz/uploads/20221201/27ee7f8428e37d122d3ab4b099ff5cf8.jpg" alt="使用vscode搭建javaweb项目"><br /> 下载完这两个插件之后会自动下载一些依赖的插件; 下载完插件重启vscode后需要修改maven的设置, 在设置中搜索: maven, 修改如下图项为本机放置maven配置文件的路径:</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221201/976852d29b429d32ac2a9d6d6c0267b6.jpg" alt="使用vscode搭建javaweb项目"><br /> 然后添加tomcat插件, 回到主页点击下图加号, 在弹出的文件选择窗口中选择本机放置tomcat的文件夹即可:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/ffc71ba8c7d7c33b506cd2ca30638e43.jpg" alt="使用vscode搭建javaweb项目"></p> <p>添加后如图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/052d5dd10a93c95ae739728dbfbbc99f.jpg" alt="使用vscode搭建javaweb项目"></p> </h1> <p>将所需工具准备好后就可以开始部署web项目了, 在vscode中按下ctrl+shift+p, 输入maven点击下图指出项:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/d16dfbcbb6c4ba1a4934c5b6c4282395.jpg" alt="使用vscode搭建javaweb项目"></p> <p>然后选择webapp, 如图指出项:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/f75d3ec30c097352875b304ea4804c9a.jpg" alt="使用vscode搭建javaweb项目"></p> <p>选择一个版本, 这里我选择1.4版, 如图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/cad50e1d2c0574bf1d1b640e8fca3995.jpg" alt="使用vscode搭建javaweb项目"></p> <p>然后选择一个文件夹存放项目, 如图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/2ee982a7d6322462de78cfc4b509aec2.jpg" alt="使用vscode搭建javaweb项目"></p> <p>此时maven开始部署项目, 在vscode的输出窗口中可以看到, 当出现如下行时, 需要我们输入项目的groupId, 此处我设置为demo, 如图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/78c480466df6deb975626ff3407fdec2.jpg" alt="使用vscode搭建javaweb项目"></p> <p>按下回车, 再输入artifactId, 此处我也设置为demo, 一般规定是(com.xxx.xxx)因为是演示所以就不那么严谨了, 如图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/812e080f2502ce6a0b5724770e0c0e54.jpg" alt="使用vscode搭建javaweb项目"><br /> 按下回车, 此时提示我们选择version直接回车就行<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/8e94f33dee6b82b79cf4791bae9ae977.jpg" alt="使用vscode搭建javaweb项目"><br /> 提示我们选择package, 直接回车<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/9d987d6f58e2c452c02d5ac18cd9a6bb.jpg" alt="使用vscode搭建javaweb项目"><br /> 提示Y, 是否确认, 回车确认<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/74f7489387df171882246fc3cc0f67c0.jpg" alt="使用vscode搭建javaweb项目"><br /> 出现<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/7939af7c2dc0b59d3337922eb2cdecc1.jpg" alt="使用vscode搭建javaweb项目"><br /> 代表我们项目部署成功了.生成的项目结构如下图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/4dd0de31fcfc46798452e91fa111dab0.jpg" alt="使用vscode搭建javaweb项目"></p> <p>然后创建我们需要的目录, java, test, resources, 创建后如图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/e3b6274c88aa0403696509c5bfc0a568.jpg" alt="使用vscode搭建javaweb项目"></p> <p>其中java文件夹用来存放java文件, resources用来存放资源文件(maven编译时会识别文件夹名所以必须要叫resources, 不然就要在pom.xml中手动配置资源文件夹)到此一个web项目的框架已经建好了, 使用maven创建web项目的话导包都是在pom.xml中进行, 这些有关maven的使用都可以通过百度搜索到, 此处不详述. 当然也可以直接将包放在webinf目录下(不推荐). (此处经历过一些挫折, 在使用tomcat10时,由于其httpservlet类的包名发生变化了, 不再是javax开头, 当时我在pom.xml文件中一直引用javax开头的servlet-api包, 被折磨了很久, 后来直接使用tomcat的servlet-api包就解决了, 但再到后来做ssm项目时, 由于spring-mvc框架中也是使用的javax开头的servlet-api包, 导致项目又挂掉了, 最后还是弃用了tomcat10, 改用回tomcat9, 算是走过的一些坑吧- -||)</p> </h1> <p>按下ctrl+shift+p, 输入maven, 选择如下图指出项:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/2f4b1bc3bba6e34e87f004df05a09e02.jpg" alt="使用vscode搭建javaweb项目"></p> <p>选择package, 如下图指出项:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/cfbbf92d23fe5675922a51d519097c88.jpg" alt="使用vscode搭建javaweb项目"></p> <p>此时maven会对项目编译, 生成target目录, 在target目录下存放的都是编译之后的文件, 如果后续开发项目报错的话, 比如配置文件啊, 包缺失啊之类的都应该先到target目录下看看. 在target目录下, 可以看到我们打包好的项目文件, 如图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/00aa3c5fef0059f534da32975b52a363.jpg" alt="使用vscode搭建javaweb项目"><br /> 右击选择用tomcat运行, 如图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/e2b3efbba74410f26a3acf77652fc622.jpg" alt="使用vscode搭建javaweb项目"></p> <p>输出窗口没有报错的话, 展开tomcat插件, 右击如图项, 选择打开浏览器:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/a3e1de2a05d97fb482784cb8699d32cc.jpg" alt="使用vscode搭建javaweb项目"></p> <p>运行结果如图:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/b78d618cb8f84d19e1a9911fea4d5677.jpg" alt="使用vscode搭建javaweb项目"><br /> 这里显示的是index.jsp的内容.到此, 一个maven web项目就搭建好了. 使用vscode的maven插件其实也能编译, 但肯定是没有直接package那么方便的, 平常比较常用到的话一般是clean, 用来清理target目录, 其实一个package命令实际上是maven插件的依次执行, 在输出窗口也有体现出来, 有关maven插件的更多使用可以通过百度得到, 此处不详述, 如图为clean命令, 点击图中的三角形即可执行:<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/36535117bee285de97af52dd67182828.jpg" alt="使用vscode搭建javaweb项目"><br /> 执行后项目中的target目录就没有了.</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-29086.htm">vue 预览 Excel 表格</a></p>
+                                        <p>下一个：<a href="/news/article-29554.htm">vue-cli项目添加骨架屏多种方式，自动生成骨架屏</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-23058.htm" title="Spring Data Jpa配置国产的神通数据库">Spring Data Jpa配置国产的神通数据库</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-5-free-ssr-node.htm" title="「9月5日」最高速度19.8M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅节点链接">「9月5日」最高速度19.8M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-29085.htm" title="Golang学习之网络参数请求-Query Params及Path Variables的区别及底层实现">Golang学习之网络参数请求-Query Params及Path Variables的区别及底层实现</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-node-share.htm" title="「11月26日」最高速度19.1M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅节点链接">「11月26日」最高速度19.1M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-19-node-share-links.htm" title="「9月19日」最高速度20.9M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「9月19日」最高速度20.9M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-clash-v2ray-ss-ssr.htm" title="「11月24日」最高速度22.4M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅节点链接">「11月24日」最高速度22.4M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share.htm" title="「11月4日」最高速度21.2M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅节点链接">「11月4日」最高速度21.2M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-free-ssr-node.htm" title="「12月22日」最高速度19.2M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅节点链接">「12月22日」最高速度19.2M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-24396.htm" title="宠物领养机构的人员分工（宠物领养机构的人员分工有哪些）">宠物领养机构的人员分工（宠物领养机构的人员分工有哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-free-high-speed-nodes.htm" title="「10月30日」最高速度18.8M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅节点链接">「10月30日」最高速度18.8M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

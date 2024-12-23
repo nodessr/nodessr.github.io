@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-29085.htm" />
+    <title>Golang学习之网络参数请求-Query Params及Path Variables的区别及底层实现</title>
+        <meta name="description" content="目录  Golang学习之网络参数请求-Query Params及Path Variables的区别及底层实现   背景 Golang实现 总结      背景 后端向web页面请求参数时，通常会有两" />
+        <link rel="icon" href="/assets/website/img/nodessr/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/"><span>Node SSR</span></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">Golang学习之网络参数请求-Query Params及Path Variables的区别及底层实现</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <div class="toc"> <h3>目录</h3> <ul> <li><a href="#GolangQuery_ParamsPath_Variables_0" rel="nofollow">Golang学习之网络参数请求-Query Params及Path Variables的区别及底层实现</a></li> <li> <ul> <li><a href="#_2" rel="nofollow">背景</a></li> <li><a href="#Golang_30" rel="nofollow">Golang实现</a></li> <li><a href="#_99" rel="nofollow">总结</a></li> </ul> </li> </ul> </div> <h2> <a id="_2" rel="nofollow"></a>背景</h2> <p>后端向web页面请求参数时，通常会有两种方式，1、<code>Query Params</code>；2、<code>Path Variables</code>，他们的区别在哪里呢？</p> <p>一、<code>Query Params</code></p> <p>顾名思义，请求参数。由前端通过k-v键值对的形式传入，其值并不是通过url本身获取，例如</p> <p><code>http://localhost:8080/Local/user?userName="nick"&amp;age=12</code></p> <p>上述链接可以分两段来理解，<code>？</code>前为路径，<code>？</code>后为路径传入的参数</p> <p>路径：<code>http://localhost:8080/Local/user</code></p> <p>参数：<code>userName="nick"</code>,<code>age=12</code></p> <p>二、<code>Path Variables</code></p> <p>路径参数。直接在<code>url</code>中获取的参数，例如</p> <p><code>http://localhost:8080/Local/user/nick</code></p> <p>上述链接就是一条路径，变量<code>nick</code>通过路径获取</p> <p>后端接口会表示为</p> <p><code>http://localhost:8080/Local/user/:userName</code></p> <h2> <a id="Golang_30" rel="nofollow"></a>Golang实现</h2> <p>在gin框架中，通过<code>context.go</code>封装了获取上述两种参数的方法，需通过<code>Context</code>结构体调用。</p> <p><strong>什么是<code>Context</code></strong></p> <p>官方的说法是，<code>Context</code>是gin框架中最重要的部分，它使得我们可以在中间件中传递参数、管理数据流，验证JSON请求，渲染JSON返回流。其中封装了非常多的功能，详细阅读请查看源码或文档。</p> <pre><code>// Context is the most important part of gin. It allows us to pass variables between middleware, // manage the flow, validate the JSON of a request and render a JSON response for example. </code></pre> <p>1、获取<code>Query Params</code></p> <p>提供了方法<code>Query</code>，gin中部分源码如下</p> <pre><code class="prism language-go"><span class="token comment">// Query returns the keyed url query value if it exists,</span> <span class="token comment">// otherwise it returns an empty string `("")`.</span> <span class="token comment">// It is shortcut for `c.Request.URL.Query().Get(key)`</span> <span class="token comment">//     GET /path?id=1234&amp;name=Manu&amp;value=</span> <span class="token comment">// 	   c.Query("id") == "1234"</span> <span class="token comment">// 	   c.Query("name") == "Manu"</span> <span class="token comment">// 	   c.Query("value") == ""</span> <span class="token comment">// 	   c.Query("wtf") == ""</span> <span class="token keyword">func</span> <span class="token punctuation">(</span>c <span class="token operator">*</span>Context<span class="token punctuation">)</span> <span class="token function">Query</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{<!-- --></span> 	value<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> c<span class="token punctuation">.</span><span class="token function">GetQuery</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> 	<span class="token keyword">return</span> value <span class="token punctuation">}</span> <span class="token comment">//查看GetQury方法实现，底层通过map去接收参数，获取第一个参数值并返回</span> <span class="token comment">// 	   It is shortcut for `c.Request.URL.Query().Get(key)`</span> <span class="token comment">//     GET /?name=Manu&amp;lastname=</span> <span class="token comment">//     ("Manu", true) == c.GetQuery("name")</span> <span class="token comment">//     ("", false) == c.GetQuery("id")</span> <span class="token comment">//     ("", true) == c.GetQuery("lastname")</span> <span class="token keyword">func</span> <span class="token punctuation">(</span>c <span class="token operator">*</span>Context<span class="token punctuation">)</span> <span class="token function">GetQuery</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	<span class="token keyword">if</span> values<span class="token punctuation">,</span> ok <span class="token operator">:=</span> c<span class="token punctuation">.</span><span class="token function">GetQueryArray</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> ok <span class="token punctuation">{<!-- --></span> 		<span class="token keyword">return</span> values<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> ok 	<span class="token punctuation">}</span> 	<span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>  </code></pre> <p>1、获取<code>Path Variables</code></p> <p>提供了方法<code>Param</code></p> <pre><code class="prism language-go"><span class="token comment">// Param returns the value of the URL param.</span> <span class="token comment">// It is a shortcut for c.Params.ByName(key)</span> <span class="token comment">//     router.GET("/user/:id", func(c *gin.Context) {<!-- --></span> <span class="token comment">//         // a GET request to /user/john</span> <span class="token comment">//         id := c.Param("id") // id == "john"</span> <span class="token comment">//     })</span> <span class="token keyword">func</span> <span class="token punctuation">(</span>c <span class="token operator">*</span>Context<span class="token punctuation">)</span> <span class="token function">Param</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{<!-- --></span> 	<span class="token keyword">return</span> c<span class="token punctuation">.</span>Params<span class="token punctuation">.</span><span class="token function">ByName</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token punctuation">}</span>  <span class="token comment">//继续查看调用方法，使用Params结构体封装</span> <span class="token comment">// ByName returns the value of the first Param which key matches the given name.</span> <span class="token comment">// If no matching Param is found, an empty string is returned.</span> <span class="token keyword">func</span> <span class="token punctuation">(</span>ps Params<span class="token punctuation">)</span> <span class="token function">ByName</span><span class="token punctuation">(</span>name <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>va <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	va<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">=</span> ps<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> 	<span class="token keyword">return</span> <span class="token punctuation">}</span> </code></pre> <h2> <a id="_99" rel="nofollow"></a>总结</h2> <p>1、从微观角度看，两者区别在于<code>Path Variables</code>通过slice获取，而<code>Query Params</code>通过map获取，关键点为是否构成k-v结构，所以当所请求参数为空值的时候，作为切片的<code>Path Variables</code>是无法成功获取参数的，而map可以通过例如<code>"name"=""</code>来接收参数，然后后台可以根据这个<code>""</code>继续处理后续接口。</p> <p>2、从宏观角度看，两者在参数获取形式上有区别。<code>Path Variables</code>通过url获取，<code>Query Params</code>通过请求参数获取。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-28622.htm">动物疫苗在哪里买比较好（动物疫苗那里买）</a></p>
+                                        <p>下一个：<a href="/news/article-29086.htm">vue 预览 Excel 表格</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-clash-v2ray-ss-ssr.htm" title="「12月17日」最高速度22.8M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅节点链接">「12月17日」最高速度22.8M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-ssr-subscribe.htm" title="「12月11日」最高速度19.7M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接">「12月11日」最高速度19.7M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-23981.htm" title="动物疫苗的使用方法视频教学大全（动物疫苗接种方法）">动物疫苗的使用方法视频教学大全（动物疫苗接种方法）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-24-free-node-subscribe-links.htm" title="「10月24日」最高速度19.2M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅节点链接">「10月24日」最高速度19.2M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-21660.htm" title="北京农大动物医院营业时间电话是多少（北京中国农业大学动物医院营业时间）">北京农大动物医院营业时间电话是多少（北京中国农业大学动物医院营业时间）</a></li>
+                        <li class="py-2"><a href="/news/article-23060.htm" title="动物疫苗品牌有哪些牌子（动物疫苗种类及类型）">动物疫苗品牌有哪些牌子（动物疫苗种类及类型）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-node-share-links.htm" title="「11月15日」最高速度18.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接">「11月15日」最高速度18.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-26-free-node-subscribe-links.htm" title="「9月26日」最高速度19.5M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅节点链接">「9月26日」最高速度19.5M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-node-share-links.htm" title="「11月10日」最高速度21M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「11月10日」最高速度21M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-8-free-node-subscribe.htm" title="「9月8日」最高速度22.4M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅节点链接">「9月8日」最高速度22.4M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅节点链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
