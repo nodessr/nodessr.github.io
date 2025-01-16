@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-41648.htm" />
+    <title>Vue2.0 Vue路由 全局后置路由守卫</title>
+        <meta name="description" content="前置路由守卫知识 全局后置路由守卫 router.afterEach((to,from,next)=&gt;{     console.log(to,from,next)}) 输出: {name: '" />
+        <link rel="icon" href="/assets/website/img/nodessr/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+                        <a class="navbar-brand" href="/"><span>Node SSR</span></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">Vue2.0 Vue路由 全局后置路由守卫</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/yasinawolaopo/article/details/122439624"  rel="nofollow">前置路由守卫知识</a></p> <h3><a id="_2" rel="nofollow"></a>全局后置路由守卫</h3> <pre><code class="prism language-js">router<span class="token punctuation">.</span><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">,</span>next<span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">,</span>next<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre> <p>输出:</p> <pre><code>{name: 'zhuye', meta: {…}, path: '/home', hash: '', query: {…},&nbsp;…}  {name: null, meta: {…}, path: '/', hash: '', query: {…},&nbsp;…}[[Prototype]]: undefined</code></pre> <p>所以在后置路由守卫中<code>next</code>是没有的。切换已经完成了，再给你<code>next</code>有什么用吗?</p> <p>从某种角度来说，我得有个<code>next</code>才能控制</p> <h4><a id="_23" rel="nofollow"></a>后置路由的作用</h4> <p>一般来说好一点的项目他都会做一个功能:</p> <blockquote> <p>标签确实是你一上来的标题，点击<code>about</code>的时候，把你的标签变了，叫<code>关于</code></p> <p>点击<code>home</code>的时候标签变成<code>主页</code></p> <p>登录(要有一个本地存储值为<code>school-bilibili</code>)点击News变成<code>信息</code>,点击<code>Message</code>标题变成<code>消息</code></p> </blockquote> <p>js可以</p> <pre><code class="prism language-js">document<span class="token punctuation">.</span>title<span class="token operator">=</span><span class="token string">"名字"</span></code></pre> <p>但是这样固定死标题了，所以:</p> <pre><code class="prism language-js"><span class="token comment">//给每一个路由都添加一个元信息</span><span class="token comment">//比如guanyu</span> meta<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span>title<span class="token punctuation">.</span><span class="token string">'关于'</span><span class="token punctuation">}</span></code></pre> <p>然后:</p> <pre><code class="prism language-js">router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">,</span>next<span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'to='</span><span class="token punctuation">,</span>to<span class="token punctuation">,</span><span class="token string">'from='</span><span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">)</span>     document<span class="token punctuation">.</span>title<span class="token operator">=</span> to<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>title<span class="token comment">//添加这一行</span><span class="token keyword">if</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>isAuth<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">if</span><span class="token punctuation">(</span>localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'school'</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token string">'bilibili'</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'学校名不对或没有，无权限查看'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre> <p>但是你写的不对，因为一上来<code>undefined</code>,所以:</p> <pre><code class="prism language-js">document<span class="token punctuation">.</span>title<span class="token operator">=</span> to<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>title<span class="token operator">||</span><span class="token string">'学习Vue'</span></code></pre> <p>在刷新的时候有一瞬间还是你的项目名，你要么改package里面的名字或者index.html里面的<code>&lt;title&gt;</code></p> <p>但是你本地存储没有<code>school-bilibili</code>但是点击了<code>news</code>虽然不给你呈现和发出弹窗警告，但是你的<code>title</code>却改成了<code>News</code>的名字，所以你直接改改早了</p> <p>你写在放行前，这里要写俩次，所以放在这里不合适,所以说可以用到<code>后置路由守卫</code></p> <pre><code class="prism language-js">router<span class="token punctuation">.</span><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">)</span>     document<span class="token punctuation">.</span>title<span class="token operator">=</span> to<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>title<span class="token operator">||</span><span class="token string">'学习Vue'</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre> <p><strong>全局后置路由守卫作用:初始化的时候被调用、每次切换路由之后被调用</strong></p> <p><strong>全局体现在我都是跟<code>router</code>进行对话的；切换之前都走<code>前置路由守卫</code>，切换之后都是走<code>后置路由守卫</code></strong></p> <h3><a id="_88" rel="nofollow"></a>总结</h3> <p><strong>路由守卫</strong></p> <p><strong>1.作用:对路由进行权限控制</strong></p> <p><strong>2.分类:全局守卫、独享守卫、组件内守卫</strong></p> <p><strong>3.全局守卫:</strong></p> <pre><code class="prism language-js"><span class="token comment">//全局前置守卫:初始化时执行、每次路由切换前执行</span> router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">,</span>next<span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'beforEach'</span><span class="token punctuation">,</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">,</span>next<span class="token punctuation">)</span><span class="token keyword">if</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>isAuth<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">//判断当前路由是否需要进行权限控制</span><span class="token keyword">if</span><span class="token punctuation">(</span>localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'school'</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token string">'bilibili'</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">//放行</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'无权限查看'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">//放行</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment">//全局后置守卫:初始化时执行、每次路由切换后执行</span> router<span class="token punctuation">.</span><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'afterEach'</span><span class="token punctuation">,</span>to<span class="token punctuation">,</span><span class="token keyword">from</span><span class="token punctuation">)</span><span class="token keyword">if</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>title<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         document<span class="token punctuation">.</span>title<span class="token operator">=</span> to<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>title<span class="token comment">//修改网页的title</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span>         document<span class="token punctuation">.</span>title<span class="token operator">=</span><span class="token string">'项目名'</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41647.htm">Python格式化输出的三种方式：%、string.format()、f-string</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-27699.htm" title="北京动物疫苗公司排名（北京动物疫苗公司排名第一）">北京动物疫苗公司排名（北京动物疫苗公司排名第一）</a></li>
+                        <li class="py-2"><a href="/news/article-40169.htm" title="宠物领养协议书范本 定期回访模板怎么写 宠物领养协议书范本 定期回访模板怎么写">宠物领养协议书范本 定期回访模板怎么写 宠物领养协议书范本 定期回访模板怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-31344.htm" title="宠物疫苗批号有假的吗 宠物疫苗批号有假的吗怎么查">宠物疫苗批号有假的吗 宠物疫苗批号有假的吗怎么查</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-ssr-node.htm" title="「12月2日」最高速度18M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅节点链接">「12月2日」最高速度18M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-29086.htm" title="vue 预览 Excel 表格">vue 预览 Excel 表格</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-ssr-subscribe.htm" title="「11月6日」最高速度18.6M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅节点链接">「11月6日」最高速度18.6M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-node-share.htm" title="「1月16日」最高速度19.1M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅节点链接">「1月16日」最高速度19.1M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-ssr-subscribe.htm" title="「11月8日」最高速度22.1M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅节点链接">「11月8日」最高速度22.1M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-free-ssr-node.htm" title="「12月25日」最高速度18.9M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅节点链接">「12月25日」最高速度18.9M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-36716.htm" title="国内动物疫苗排名第一 国内动物疫苗排名第一名">国内动物疫苗排名第一 国内动物疫苗排名第一名</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
