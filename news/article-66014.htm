@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-66014.htm" />
+    <title>Axios封装和Vuex模块化</title>
+        <meta name="description" content="axios封装  我之前是这样写法,如果有params,query参数字段的话字符串拼接。但看网上的有人说不建议放在Vue原型  import axios from 'axios' Vue.proto" />
+        <link rel="icon" href="/assets/website/img/nodessr/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Node SSR节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodessr.github.io/news/article-66014.htm" />
+    <meta property="og:site_name" content="Node SSR节点订阅官网" />
+    <meta property="og:title" content="Axios封装和Vuex模块化" />
+    <meta property="og:image" content="https://nodessr.github.io/uploads/20240819-1/4ff280f78c5865f58fc12211239ffd50.webp" />
+        <meta property="og:release_date" content="2025-03-02T09:38:54" />
+    <meta property="og:updated_time" content="2025-03-02T09:38:54" />
+        <meta property="og:description" content="axios封装  我之前是这样写法,如果有params,query参数字段的话字符串拼接。但看网上的有人说不建议放在Vue原型  import axios from 'axios' Vue.proto" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Axios封装和Vuex模块化">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Node SSR</span>
+                        </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">Axios封装和Vuex模块化</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-dracula"> <h4> <a id="axios_0" rel="nofollow"></a>axios封装</h4> <blockquote> <p>我之前是这样写法,如果有params,query参数字段的话字符串拼接。但看网上的有人说不建议放在Vue原型</p> </blockquote> <pre><code class="prism language-javascript"><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span> Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$ajax<span class="token operator">=</span> axios <span class="token comment">// 原型</span>   <span class="token keyword">this</span><span class="token punctuation">.</span>$ajax<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'api/getNewsList'</span><span class="token punctuation">)</span> <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>     <span class="token keyword">this</span><span class="token punctuation">.</span>newsList<span class="token operator">=</span>response<span class="token punctuation">.</span>data<span class="token punctuation">.</span>data<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> </code></pre> <blockquote> <p>这两天看大佬写Vuex+axios，大佬就是大佬</p> </blockquote> <p>封装axios</p> <pre><code class="prism language-javascript"><span class="token comment">/* ajax 请求函数模块 */</span> <span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span> <span class="token comment">/**  * 向外部暴漏一个函数 ajax  * @param {*} url 请求路径，默认为空  * @param {*} data 请求参数，默认为空对象  * @param {*} type 请求方法，默认为GET  */</span> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">ajax</span> <span class="token punctuation">(</span>url <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">,</span> data <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span> type <span class="token operator">=</span> <span class="token string">'GET'</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>   <span class="token comment">// 返回值 Promise对象 （异步返回的数据是response.data，而不是response）</span>   <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token comment">// （利用axios）异步执行ajax请求</span>     <span class="token keyword">let</span> promise <span class="token comment">// 这个内部的promise用来保存axios的返回值(promise对象)</span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'GET'</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>       <span class="token comment">// 准备 url query 参数数据</span>       <span class="token keyword">let</span> dataStr <span class="token operator">=</span> <span class="token string">''</span> <span class="token comment">// 数据拼接字符串，将data连接到url</span>       Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>key <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>         dataStr <span class="token operator">+=</span> key <span class="token operator">+</span> <span class="token string">'='</span> <span class="token operator">+</span> data<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'&amp;'</span>       <span class="token punctuation">}</span><span class="token punctuation">)</span>       <span class="token keyword">if</span> <span class="token punctuation">(</span>dataStr <span class="token operator">!==</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>       <span class="token comment">// 把最后的&amp;去掉，拼成完整的url</span>         dataStr <span class="token operator">=</span> dataStr<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> dataStr<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'&amp;'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>         url <span class="token operator">=</span> url <span class="token operator">+</span> <span class="token string">'?'</span> <span class="token operator">+</span> dataStr       <span class="token punctuation">}</span>       <span class="token comment">// 发送 get 请求</span>       promise <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span>     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>       <span class="token comment">// 发送 post 请求</span>       promise <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">)</span>     <span class="token punctuation">}</span>     promise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>response <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>       <span class="token comment">// 成功回调resolve()</span>       <span class="token function">resolve</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span>     <span class="token punctuation">}</span><span class="token punctuation">)</span>       <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>error <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>         <span class="token comment">// 失败回调reject()</span>         <span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>       <span class="token punctuation">}</span><span class="token punctuation">)</span>   <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>  </code></pre> <p>使用的话</p> <pre><code class="prism language-javascript"><span class="token keyword">const</span> <span class="token constant">BASE_URL</span> <span class="token operator">=</span> <span class="token string">'/api'</span>  <span class="token comment">// 地址全写，但考虑跨域 / proxy 跨域设置</span> <span class="token comment">// params参数 </span> <span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">reqAddress</span> <span class="token operator">=</span> geohash <span class="token operator">=&gt;</span> <span class="token function">ajax</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${<!-- --></span><span class="token constant">BASE_URL</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/position/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${<!-- --></span>geohash<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span> <span class="token comment">// query参数</span> <span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">reqSearchShop</span> <span class="token operator">=</span> <span class="token punctuation">(</span>geohash<span class="token punctuation">,</span> keyword<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">ajax</span><span class="token punctuation">(</span><span class="token constant">BASE_URL</span> <span class="token operator">+</span> <span class="token string">'/search_shops'</span><span class="token punctuation">,</span> <span class="token punctuation">{<!-- --></span>geohash<span class="token punctuation">,</span> keyword<span class="token punctuation">}</span><span class="token punctuation">)</span> </code></pre> <h4> <a id="Vuex_74" rel="nofollow"></a>Vuex模块化</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/a40cca4c099c0d57027a78d37afe06ec.jpg" alt="Axios封装和Vuex模块化"><br /> index.js</p> <pre><code class="prism language-javascript"><span class="token comment">/* vuex最核心的管理对象store 组装模块并导出 store 的地方  */</span> <span class="token comment">// 首先引入Vue及Vuex</span> <span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span> <span class="token keyword">import</span> Vuex <span class="token keyword">from</span> <span class="token string">'vuex'</span>  <span class="token comment">// 引入四个基本模块</span> <span class="token keyword">import</span> state <span class="token keyword">from</span> <span class="token string">'./state'</span> <span class="token keyword">import</span> mutations <span class="token keyword">from</span> <span class="token string">'./mutations'</span> <span class="token keyword">import</span> actions <span class="token keyword">from</span> <span class="token string">'./actions'</span> <span class="token keyword">import</span> getters <span class="token keyword">from</span> <span class="token string">'./getters'</span>  <span class="token comment">// 一定要声明使用插件</span> Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Vuex<span class="token punctuation">)</span>  <span class="token comment">// 把 store 对象提供给 “store” 选项，这可以把 store 的实例注入所有的子组件</span> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>   state<span class="token punctuation">,</span>   mutations<span class="token punctuation">,</span>   actions<span class="token punctuation">,</span>   getters <span class="token punctuation">}</span><span class="token punctuation">)</span> </code></pre> <blockquote> <p>挂载Vue实例<br /> 使用的话this.$</p> </blockquote> <pre><code class="prism language-javascript"><span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">'./store'</span>  <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>   el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>   components<span class="token punctuation">:</span> <span class="token punctuation">{<!-- --></span> App <span class="token punctuation">}</span><span class="token punctuation">,</span>   template<span class="token punctuation">:</span> <span class="token string">'&lt;App/&gt;'</span><span class="token punctuation">,</span>   <span class="token comment">// 为根组件加入路由</span>   router<span class="token punctuation">,</span>   store <span class="token punctuation">}</span><span class="token punctuation">)</span> </code></pre> <p>state.js</p> <pre><code class="prism language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{<!-- --></span>   categorys<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 食品分类数组</span>   goods<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 商品列表</span>   info<span class="token punctuation">:</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// 商家信息</span> <span class="token punctuation">}</span> </code></pre> <p>mutation-types.js</p> <pre><code class="prism language-javascript"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">RECEIVE_CATEGORYS</span> <span class="token operator">=</span> <span class="token string">'receive_categorys'</span> <span class="token comment">// 接收分类数组</span> <span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">RECEIVE_GOODS</span> <span class="token operator">=</span> <span class="token string">'receive_goods'</span> <span class="token comment">// 接收商品数组</span> <span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">RECEIVE_INFO</span> <span class="token operator">=</span> <span class="token string">'receive_info'</span> <span class="token comment">// 接收商家信息</span> </code></pre> <p>mutations.js</p> <pre><code class="prism language-javascript"><span class="token comment">/* vuex 的 mutations 模块 */</span> <span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span> <span class="token keyword">import</span> <span class="token punctuation">{<!-- --></span>   <span class="token constant">RECEIVE_CATEGORYS</span><span class="token punctuation">,</span>   <span class="token constant">RECEIVE_INFO</span><span class="token punctuation">,</span>   <span class="token constant">RECEIVE_GOODS</span><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./mutation-types'</span> <span class="token comment">// [方法名](state,{param}){}</span> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{<!-- --></span>   <span class="token punctuation">[</span><span class="token constant">RECEIVE_CATEGORYS</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> <span class="token punctuation">{<!-- --></span>categorys<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     state<span class="token punctuation">.</span>categorys <span class="token operator">=</span> categorys   <span class="token punctuation">}</span><span class="token punctuation">,</span>   <span class="token punctuation">[</span><span class="token constant">RECEIVE_INFO</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> <span class="token punctuation">{<!-- --></span>info<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     state<span class="token punctuation">.</span>info <span class="token operator">=</span> info   <span class="token punctuation">}</span><span class="token punctuation">,</span>   <span class="token punctuation">[</span><span class="token constant">RECEIVE_GOODS</span><span class="token punctuation">]</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> <span class="token punctuation">{<!-- --></span>goods<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     state<span class="token punctuation">.</span>goods <span class="token operator">=</span> goods   <span class="token punctuation">}</span> <span class="token punctuation">}</span>  </code></pre> <p>actions.js</p> <pre><code class="prism language-javascript"><span class="token comment">/* Action:通过操作mutation间接更新state的多个方法的对象  */</span>  <span class="token comment">// 注意要引入api接口函数</span> <span class="token keyword">import</span> <span class="token punctuation">{<!-- --></span>   reqCategorys<span class="token punctuation">,</span>   reqShopGoods<span class="token punctuation">,</span>   reqShopInfo<span class="token punctuation">,</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../api'</span> <span class="token keyword">import</span> <span class="token punctuation">{<!-- --></span>   <span class="token constant">RECEIVE_CATEGORYS</span><span class="token punctuation">,</span>   <span class="token constant">RECEIVE_GOODS</span><span class="token punctuation">,</span>   <span class="token constant">RECEIVE_INFO</span><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./mutation-types'</span> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{<!-- --></span>   <span class="token comment">// 异步获取食品分类列表</span>   <span class="token keyword">async</span> <span class="token function">getCategorys</span> <span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>commit<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token comment">// 发送异步ajax请求</span>     <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">reqCategorys</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token comment">// 提交一个mutation</span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>       <span class="token keyword">const</span> categorys <span class="token operator">=</span> result<span class="token punctuation">.</span>data       <span class="token function">commit</span><span class="token punctuation">(</span><span class="token constant">RECEIVE_CATEGORYS</span><span class="token punctuation">,</span> <span class="token punctuation">{<!-- --></span>categorys<span class="token punctuation">}</span><span class="token punctuation">)</span>     <span class="token punctuation">}</span>   <span class="token punctuation">}</span><span class="token punctuation">,</span>    <span class="token comment">// 异步获取商家列表</span>   <span class="token keyword">async</span> <span class="token function">getShops</span> <span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>commit<span class="token punctuation">,</span> state<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token comment">// 对象的结构赋值</span>     <span class="token keyword">const</span> <span class="token punctuation">{<!-- --></span>longitude<span class="token punctuation">,</span> latitude<span class="token punctuation">}</span> <span class="token operator">=</span> state     <span class="token comment">// 发送异步ajax请求</span>     <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">reqShops</span><span class="token punctuation">(</span>longitude<span class="token punctuation">,</span> latitude<span class="token punctuation">)</span>     <span class="token comment">// 提交一个mutation</span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>       <span class="token keyword">const</span> shops <span class="token operator">=</span> result<span class="token punctuation">.</span>data       <span class="token function">commit</span><span class="token punctuation">(</span><span class="token constant">RECEIVE_SHOPS</span><span class="token punctuation">,</span> <span class="token punctuation">{<!-- --></span>shops<span class="token punctuation">}</span><span class="token punctuation">)</span>     <span class="token punctuation">}</span>   <span class="token punctuation">}</span><span class="token punctuation">,</span>   <span class="token comment">// 异步获取商家信息</span>   <span class="token keyword">async</span> <span class="token function">getShopInfo</span> <span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>commit<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">reqShopInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>       <span class="token keyword">const</span> info <span class="token operator">=</span> result<span class="token punctuation">.</span>data       <span class="token function">commit</span><span class="token punctuation">(</span><span class="token constant">RECEIVE_INFO</span><span class="token punctuation">,</span> <span class="token punctuation">{<!-- --></span>info<span class="token punctuation">}</span><span class="token punctuation">)</span>     <span class="token punctuation">}</span>   <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">}</span>  </code></pre> <p>getters.js</p> <pre><code class="prism language-javascript"><span class="token comment">/* 包含多个基于state的getter计算属性的对象  */</span> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{<!-- --></span>   <span class="token function">totalPrice</span> <span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">return</span> state<span class="token punctuation">.</span>cartFoods<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>preTotal<span class="token punctuation">,</span> food<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> preTotal <span class="token operator">+</span> food<span class="token punctuation">.</span>count <span class="token operator">*</span> food<span class="token punctuation">.</span>price<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>   <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">}</span>  </code></pre> <blockquote> <p>将数据放在Vuex中,在页面中调用。详情还是看官方文档。</p> </blockquote> <pre><code class="prism language-javascript"><span class="token comment">// state</span> computed<span class="token punctuation">:</span> <span class="token punctuation">{<!-- --></span>     <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'info'</span><span class="token punctuation">,</span> <span class="token string">'categorys'</span><span class="token punctuation">,</span> <span class="token string">'goods'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token punctuation">}</span> <span class="token comment">// mutations 同步</span> <span class="token comment">// action 异步 提交mutations</span>     <span class="token comment">// 通过this.$store.dispatch 方法触发调用Action</span>     <span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'getAddress'</span><span class="token punctuation">)</span> 	<span class="token comment">// this.getAddress()</span>         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getUserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token punctuation">}</span><span class="token punctuation">,</span>   methods<span class="token punctuation">:</span> <span class="token punctuation">{<!-- --></span>     <span class="token operator">...</span><span class="token function">mapActions</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'getUserInfo'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>   <span class="token punctuation">}</span> </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-66013.htm">Spring的两种依赖注入方式:setter方法注入与构造方法注入</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-62948.htm" title="动物防疫预防为主下一句是什么意思（动物防疫的内容有哪些）">动物防疫预防为主下一句是什么意思（动物防疫的内容有哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-node-share-links.htm" title="「11月15日」最高速度18.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接">「11月15日」最高速度18.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-37198.htm" title="给仓鼠治病的医院（治疗仓鼠宠物医院在线咨询）">给仓鼠治病的医院（治疗仓鼠宠物医院在线咨询）</a></li>
+                        <li class="py-2"><a href="/news/article-31344.htm" title="宠物疫苗批号有假的吗 宠物疫苗批号有假的吗怎么查">宠物疫苗批号有假的吗 宠物疫苗批号有假的吗怎么查</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-node-subscribe-links.htm" title="「11月19日」最高速度22.5M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「11月19日」最高速度22.5M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-37199.htm" title="属蛇的养猫咪好不好（属蛇的人养猫）">属蛇的养猫咪好不好（属蛇的人养猫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-17-free-node-subscribe-links.htm" title="「2月17日」最高速度20.8M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅节点链接">「2月17日」最高速度20.8M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-45124.htm" title="宠物专卖app（宠物专卖店软件）">宠物专卖app（宠物专卖店软件）</a></li>
+                        <li class="py-2"><a href="/news/article-50097.htm" title="延吉安泰动物医院怎么样呀好吗（延吉延农动物医院好吗）">延吉安泰动物医院怎么样呀好吗（延吉延农动物医院好吗）</a></li>
+                        <li class="py-2"><a href="/news/article-58281.htm" title="动物预防接种名词解释（动物预防接种名词解释是什么）">动物预防接种名词解释（动物预防接种名词解释是什么）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">91</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

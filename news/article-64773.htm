@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-64773.htm" />
+    <title>Hive插入数据</title>
+        <meta name="description" content="1、创建完表之后，就可以插入数据了，在hive中，一般使用LOAD DATA插入数据，数据来源一般为两种，一种是从本地文件系统，第二种是从hadoop文件系统。基本语法如下： LOAD DATA [L" />
+        <link rel="icon" href="/assets/website/img/nodessr/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Node SSR节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodessr.github.io/news/article-64773.htm" />
+    <meta property="og:site_name" content="Node SSR节点订阅官网" />
+    <meta property="og:title" content="Hive插入数据" />
+    <meta property="og:image" content="https://nodessr.github.io/uploads/20240819-1/696a2771d02e0af779837854ba7630b5.webp" />
+        <meta property="og:release_date" content="2025-02-28T06:57:04" />
+    <meta property="og:updated_time" content="2025-02-28T06:57:04" />
+        <meta property="og:description" content="1、创建完表之后，就可以插入数据了，在hive中，一般使用LOAD DATA插入数据，数据来源一般为两种，一种是从本地文件系统，第二种是从hadoop文件系统。基本语法如下： LOAD DATA [L" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Hive插入数据">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Node SSR</span>
+                        </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">Hive插入数据</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>1、创建完表之后，就可以插入数据了，在hive中，一般使用LOAD DATA插入数据，数据来源一般为两种，一种是从本地文件系统，第二种是从hadoop文件系统。基本语法如下：</p> <pre class="prettyprint"><code class="hljs sql"><span class="hljs-operator"><span class="hljs-keyword">LOAD</span> DATA [<span class="hljs-keyword">LOCAL</span>] INPATH <span class="hljs-string">'filepath'</span> [OVERWRITE] <span class="hljs-keyword">INTO</span> <span class="hljs-keyword">TABLE</span> tablename[PARTITION (partcol1=val1,partcol2=val2,…)]</span></code></pre> <p>LOCAL是标识符指定本地路径,它是可选的; <br /> OVERWRITE 是可选的，覆盖表中的数据; <br /> PARTITION 也是可选的。 <br /> 测试： <br /> 将下列数据插入到employee表中，数据格式为每个字段中间使用tab分割，每行使用回车，存储到一个txt文件中，</p> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-number">1201</span>    Gopal   <span class="hljs-number">45000</span>   Technical manager <span class="hljs-number">1202</span>    Manisha <span class="hljs-number">45000</span>   Proof reader <span class="hljs-number">1203</span>    lisong  <span class="hljs-number">50000</span>   what <span class="hljs-keyword">is</span> you <span class="hljs-number">1204</span>    xiaohau <span class="hljs-number">88888</span>   abcdefg <span class="hljs-number">1205</span>    xiaoming        <span class="hljs-number">99999</span>   hehehehe</code></pre> <p>执行导入语句：</p> <pre class="prettyprint"><code class="hljs sql"><span class="hljs-operator"><span class="hljs-keyword">LOAD</span> DATA <span class="hljs-keyword">LOCAL</span> INPATH <span class="hljs-string">'/home/hadoop/HivePy/employee.txt'</span> OVERWRITE <span class="hljs-keyword">INTO</span> <span class="hljs-keyword">TABLE</span> userdb.employee;</span></code></pre> <p>，然后查看结果得到： <br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/a86b4a939e09f29bc0bfeac4ea845092.jpg" alt="Hive插入数据"><br /> 2、使用python操作hive，插入数据，代码如下：</p> <pre class="prettyprint"><code class="hljs python"><span class="hljs-comment"># coding:utf-8</span> <span class="hljs-keyword">from</span> pyhive <span class="hljs-keyword">import</span> hive <span class="hljs-keyword">from</span> TCLIService.ttypes <span class="hljs-keyword">import</span> TOperationState  <span class="hljs-comment"># 打开hive连接</span> hiveConn = hive.connect(host=<span class="hljs-string">'192.168.83.135'</span>,port=<span class="hljs-number">11111</span>,username=<span class="hljs-string">'hadoop'</span>) cursor = hiveConn.cursor()  <span class="hljs-comment"># 执行sql语句</span> sql = <span class="hljs-string">''' LOAD DATA LOCAL INPATH '/home/hadoop/HivePy/employee.txt' OVERWRITE INTO TABLE userdbbypy.employee '''</span> cursor.execute(sql, async=<span class="hljs-keyword">True</span>)  <span class="hljs-comment"># 得到执行语句的状态</span> status = cursor.poll().operationState <span class="hljs-keyword">print</span> <span class="hljs-string">"status:"</span>,status  <span class="hljs-comment"># 关闭hive连接</span> cursor.close() hiveConn.close()</code></pre> <p>执行代码，运行程序后查询相关表，结果如图所示： <br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/da035b32565274a547e2cb16b38be03b.jpg" alt="Hive插入数据"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-64771.htm">spring.profiles.active的使用</a></p>
+                                        <p>下一个：<a href="/news/article-65376.htm">vue-cli@3封装多模块Vuex（vue项目模板封装系列）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-58282.htm" title="上海宠物医院综艺（上海良心的宠物医院）">上海宠物医院综艺（上海良心的宠物医院）</a></li>
+                        <li class="py-2"><a href="/news/article-58281.htm" title="动物预防接种名词解释（动物预防接种名词解释是什么）">动物预防接种名词解释（动物预防接种名词解释是什么）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-ssr-node.htm" title="「11月12日」最高速度18.2M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接">「11月12日」最高速度18.2M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-45124.htm" title="宠物专卖app（宠物专卖店软件）">宠物专卖app（宠物专卖店软件）</a></li>
+                        <li class="py-2"><a href="/news/article-23060.htm" title="动物疫苗品牌有哪些牌子（动物疫苗种类及类型）">动物疫苗品牌有哪些牌子（动物疫苗种类及类型）</a></li>
+                        <li class="py-2"><a href="/news/article-24908.htm" title="数据结构-有向无环图的拓扑排序（拓扑排序的简单应用）_在线工具">数据结构-有向无环图的拓扑排序（拓扑排序的简单应用）_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-ssr-node.htm" title="「12月3日」最高速度18.8M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅节点链接">「12月3日」最高速度18.8M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-2-free-ssr-subscribe.htm" title="「2月2日」最高速度21.4M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅节点链接">「2月2日」最高速度21.4M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-24909.htm" title="宠物怎么寄到别的城市大概多少钱（宠物怎么快递到外地?）">宠物怎么寄到别的城市大概多少钱（宠物怎么快递到外地?）</a></li>
+                        <li class="py-2"><a href="/news/article-52733.htm" title="小型狗粮加工设备视频讲解大全（小型狗粮加工厂的流程）">小型狗粮加工设备视频讲解大全（小型狗粮加工厂的流程）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">91</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

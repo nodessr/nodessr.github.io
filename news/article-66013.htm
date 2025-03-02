@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-66013.htm" />
+    <title>Spring的两种依赖注入方式:setter方法注入与构造方法注入</title>
+        <meta name="description" content="&nbsp; &nbsp;Spring的两种依赖注入方式：setter注入与构造方法注入，这两种方法的不同主要就是在xml文件下对应使用property和constructor-arg属性， 例如： " />
+        <link rel="icon" href="/assets/website/img/nodessr/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Node SSR节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodessr.github.io/news/article-66013.htm" />
+    <meta property="og:site_name" content="Node SSR节点订阅官网" />
+    <meta property="og:title" content="Spring的两种依赖注入方式:setter方法注入与构造方法注入" />
+    <meta property="og:image" content="https://nodessr.github.io/uploads/20240819-1/cc2f77168fe0d3a3b31880a81f44b823.webp" />
+        <meta property="og:release_date" content="2025-03-02T09:38:54" />
+    <meta property="og:updated_time" content="2025-03-02T09:38:54" />
+        <meta property="og:description" content="&nbsp; &nbsp;Spring的两种依赖注入方式：setter注入与构造方法注入，这两种方法的不同主要就是在xml文件下对应使用property和constructor-arg属性， 例如： " />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring的两种依赖注入方式:setter方法注入与构造方法注入">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Node SSR</span>
+                        </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">Spring的两种依赖注入方式:setter方法注入与构造方法注入</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp; &nbsp;<span style="font-size:18px">Spring的两种依赖注入方式：setter注入与构造方法注入，这两种方法的不同主要就是在xml文件下对应使用property和constructor-arg属性， 例如：</span></p> <blockquote style="margin:0 0 0 40px; border:none; padding:0px"> <p><span style="font-size:18px">property属性：&lt;property name="id" value="123"&gt;&lt;/property&gt;(其中name的值为原类中的属性名)</span></p> <p><span style="font-size:18px"><span style="font-size:18px">constructor-arg属性：</span>&lt;constructor-arg index="0" value="456"&gt;&lt;/constructor-arg&gt;(其中index的值为0~n-1，n代表构造函数中的输入参数的数量)</span></p> <p><span style="font-size:18px"><br /></span></p> </blockquote> <p><span style="font-size:24px">1.setter方法注入</span></p> <p><span style="font-size:18px">&nbsp; &nbsp;setter方法注入即是创建一个普通的JavaBean类，为需要注入的属性通过对应的setter方法即可，如：</span></p> <p><span style="font-size:18px">（1）创建一个Id类：</span></p> <p><span style="font-size:18px"></span></p> <pre><code class="language-java">package com.loster.li;  public class Id { 	private int id; 	private String name; 	public int getId() { 		return id; 	} 	public void setId(int id) { 		this.id = id; 	} 	public String getName() { 		return name; 	} 	public void setName(String name) { 		this.name = name; 	} }</code></pre> <p><span style="font-size:18px">（2）创建配置文件Id_Bean.xml</span><br /> </p> <pre><code class="language-html">&lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;beans xmlns="http://www.springframework.org/schema/beans"        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"        xsi:schemaLocation="http://www.springframework.org/schema/beans            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"&gt;             	&lt;bean id="id" class="com.loster.li.Id"&gt; 	&lt;property name="id" value="123"&gt;&lt;/property&gt; 	&lt;property name="name" value="xiaoli"&gt;&lt;/property&gt; 	&lt;/bean&gt; &lt;/beans&gt;</code></pre> <p><span style="font-size:18px">（3）编写测试类IdTest.java，并运行：</span></p> <pre><code class="language-java">package com.loster.li;  import org.springframework.context.support.ClassPathXmlApplicationContext;  public class IdTest { 	public static void main(String[] args){ 		ClassPathXmlApplicationContext context = new  				ClassPathXmlApplicationContext("com/loster/li/Id_Bean.xml"); 		 		Id id = (Id)context.getBean("id"); 		System.out.println(id.getId()); 		System.out.println(id.getName()); 	} }</code></pre> <p>&nbsp; &nbsp;<br /> <span style="font-size:18px">运行结果如下：</span> </p> <div style="text-align:center">  <img decoding="async" src="http://img.555519.xyz/uploads/20230217/d956e5a60bc0926d3e98808895f6e924.jpg" alt="Spring的两种依赖注入方式:setter方法注入与构造方法注入" width="221" height="38"> </div> <p><span style="font-size:18px"></p> <p></span> </p> <p><span style="font-size:18px"><span style="font-size:24px">2.构造方法注入</span><br /></span></p> <p><span style="font-size:18px">（1）将上面的Id.class修改为：</span></p> <p><span style="font-size:18px"></span></p> <pre><code class="language-java">package com.loster.li;  public class Id { 	private int id; 	private String name; 	public Id(int id,String name){ 		this.id = id; 		this.name = name; 	} 	public int getId() { 		return id; 	} 	public void setId(int id) { 		this.id = id; 	} 	public String getName() { 		return name; 	} 	public void setName(String name) { 		this.name = name; 	} }</code></pre> <p><span style="font-size:18px">（2）将上面的Id_Bean.xml修改为：</span> </p> <p><span style="font-size:18px"></span></p> <pre><code class="language-html">&lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;beans xmlns="http://www.springframework.org/schema/beans"        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"        xsi:schemaLocation="http://www.springframework.org/schema/beans            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"&gt;             	&lt;bean id="id" class="com.loster.li.Id"&gt; 	&lt;constructor-arg index="0" value="456"&gt;&lt;/constructor-arg&gt; 	&lt;constructor-arg index="1" value="dawang"&gt;&lt;/constructor-arg&gt; 	&lt;/bean&gt; &lt;/beans&gt;</code></pre> <p><span style="font-size:18px">（3）再次运行IdTest.java，运行结果如下：</span> </p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img decoding="async" src="http://img.555519.xyz/uploads/20230217/ca38ec4e7c2266eada3fbe4b3a9cb5e4.jpg" alt="Spring的两种依赖注入方式:setter方法注入与构造方法注入" width="109" height="40"></p> <p><span style="font-size:18px"></p> <p></span></p> <p><span style="font-size:18px"><br /></span></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-65377.htm">网页中的动态加载(js文件和css文件即换肤)</a></p>
+                                        <p>下一个：<a href="/news/article-66014.htm">Axios封装和Vuex模块化</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-clash-v2ray-ss-ssr.htm" title="「12月12日」最高速度19.7M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅节点链接">「12月12日」最高速度19.7M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-58282.htm" title="上海宠物医院综艺（上海良心的宠物医院）">上海宠物医院综艺（上海良心的宠物医院）</a></li>
+                        <li class="py-2"><a href="/news/article-52735.htm" title="家装暗线时底盒用什么牌子的好用(家装暗线时底盒用什么牌子的好一点)">家装暗线时底盒用什么牌子的好用(家装暗线时底盒用什么牌子的好一点)</a></li>
+                        <li class="py-2"><a href="/news/article-40658.htm" title="给猫咪洗澡驱虫多少钱（小猫洗澡加驱虫多少钱）">给猫咪洗澡驱虫多少钱（小猫洗澡加驱虫多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-66014.htm" title="Axios封装和Vuex模块化">Axios封装和Vuex模块化</a></li>
+                        <li class="py-2"><a href="/news/article-37199.htm" title="属蛇的养猫咪好不好（属蛇的人养猫）">属蛇的养猫咪好不好（属蛇的人养猫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-28-free-node-subscribe-links.htm" title="「1月28日」最高速度20.5M/S，2025年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅节点链接">「1月28日」最高速度20.5M/S，2025年SSR/Clash/Shadowrocket/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-46598.htm" title="动物医院主管部门是谁 动物医院主管部门是谁啊">动物医院主管部门是谁 动物医院主管部门是谁啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-node-share.htm" title="「2月15日」最高速度20.1M/S，2025年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅节点链接">「2月15日」最高速度20.1M/S，2025年SSR/Shadowrocket/Clash/V2ray每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-50611.htm" title="从没出过门的猫走丢了能自己回家吗（从没出过门的猫走丢了能自己回家吗视频）">从没出过门的猫走丢了能自己回家吗（从没出过门的猫走丢了能自己回家吗视频）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">91</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

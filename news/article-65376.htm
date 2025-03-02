@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-65376.htm" />
+    <title>vue-cli@3封装多模块Vuex（vue项目模板封装系列）</title>
+        <meta name="description" content="前言 上一期分享了如何在vue-cli3的框架中，封装Axios。本期将分享如何在vue项目中添加Vuex，并封装使用。  本文内容偏重于vuex的使用介绍，因此，并不会对项目案例中vuex的细节进行" />
+        <link rel="icon" href="/assets/website/img/nodessr/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Node SSR节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodessr.github.io/news/article-65376.htm" />
+    <meta property="og:site_name" content="Node SSR节点订阅官网" />
+    <meta property="og:title" content="vue-cli@3封装多模块Vuex（vue项目模板封装系列）" />
+    <meta property="og:image" content="https://nodessr.github.io/uploads/20240819-1/235c4d3379d84c3ebdf2e4f38029119a.webp" />
+        <meta property="og:release_date" content="2025-03-01T07:00:03" />
+    <meta property="og:updated_time" content="2025-03-01T07:00:03" />
+        <meta property="og:description" content="前言 上一期分享了如何在vue-cli3的框架中，封装Axios。本期将分享如何在vue项目中添加Vuex，并封装使用。  本文内容偏重于vuex的使用介绍，因此，并不会对项目案例中vuex的细节进行" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue-cli@3封装多模块Vuex（vue项目模板封装系列）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Node SSR</span>
+                        </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">vue-cli@3封装多模块Vuex（vue项目模板封装系列）</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3> <a id="_0" rel="nofollow"></a>前言</h3> <p>上一期分享了如何在vue-cli3的框架中，封装Axios。本期将分享如何在vue项目中添加Vuex，并封装使用。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/198423863017b4ae0b29ad6eabeb5bb0.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p>本文内容偏重于vuex的使用介绍，因此，并不会对项目案例中vuex的细节进行讲解，强烈建议读者配合GitHub上面的项目实例进行对比阅读，这样会帮助你更好地理解案例中vuex封装使用的全过程（ps：主要是我觉得我的案例代码写的还可以，一看就懂，文章内容属于案例代码的阅读目录）。</p> <p>GitHub项目地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/jiangjiaheng/web-template"  rel="nofollow">https://github.com/jiangjiaheng/web-template</a></p> <h3> <a id="Vuex_10" rel="nofollow"></a>关于Vuex</h3> <h4> <a id="1__12" rel="nofollow"></a>1. 官方文档</h4> <p>本文默认你对vuex有一定的了解，并且阅读过vuex的官方文档，因此本文就不在赘述关于Vuex的基础知识。</p> <p>Vuex官方文档地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://vuex.vuejs.org/zh/guide/"  rel="nofollow">https://vuex.vuejs.org/zh/guide/</a></p> <h4> <a id="2__18" rel="nofollow"></a>2. 个人理解</h4> <p>如果你已经阅读过Vuex的官方文档，相信你已经认识了<code>state</code>, <code>getter</code>, <code>mutation</code>, <code>action</code>, <code>modules</code> ，它们都是Vuex的核心元素。</p> <p>关于它们的具体内容，不在赘述，在这里面我只是简单总结一下，这几个元素的特点、作用，帮助初学者更好地理解。</p> <ul> <li> <p><code>state</code> 类似于vue中<code>data</code>，用于存放数据模型；</p> </li> <li> <p><code>getter</code>类似于vue中<code>computed</code>，相当于<code>state</code>的计算属性；</p> </li> <li> <p><code>mutation</code>类似于vue中的<code>method</code>，只有它的方法函数可以改变<code>state</code>的值，同时它的方法函数必须是同步，不能是异步；</p> </li> <li> <p><code>action</code>类似<code>mutation</code>，但是它只能通过调用<code>mutation</code>来改变<code>state</code>的值，同时它的函数方法可以是异步的；</p> </li> <li> <p><code>modules</code>可以引入多个module，通过这个属性，我们可以添加多个module进入Vuex的store中。</p> </li> </ul> <h3> <a id="_34" rel="nofollow"></a>项目实例</h3> <h4> <a id="1__36" rel="nofollow"></a>1. 介绍</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/d5a7786f9251cfa27187b980644cd10f.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p>如上图所示，我将通过自己创建评分组件，为你展示如何封装多个module的Vuex仓库，并且优雅地使用它们。</p> <h4> <a id="2_Vuex_42" rel="nofollow"></a>2. 添加Vuex</h4> <pre><code>npm add vuex </code></pre> <p>在vue项目所在文件夹内打开命令行，输入上面的指令，即可添加Vuex。</p> <p>添加成功后，你就可以在src文件夹下，看到store文件夹，并且在main.js中，也会自动添加store。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/574d3a72f956b1a56f0ae65e0c1c6a7d.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/8f5e0fc4583f3a0e80eb1945dd0049f4.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <h4> <a id="3_modules_55" rel="nofollow"></a>3. 封装modules</h4> <p>在store的文件夹中，创建一个modules文件夹，并且在该文件夹中添加modulA.js，moduleB.js文件。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/e843d9c51054b1cd2400bfe82912ffbf.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p>再在两个module文件中添加，各自module的内容。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/b8b8f763195febbe92c3e5592383791d.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/24921128cc5f227ed180209c489bd0a3.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <p>最后在store.js中引入这两个模块，完成封装。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/e305dd8c27d02e6f42914596293d3c35.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <h4> <a id="4__71" rel="nofollow"></a>4. 创建评分卡片</h4> <p>在component文件夹下面，添加一个RateCard.vue文件，添加代码。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/2e7355ac05391d10235ec7c2368f6785.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> <h4> <a id="5_vueVuex_77" rel="nofollow"></a>5. 在vue文件中引用Vuex</h4> <p>在home.vue引入RateCard，然后再引入vuex，进行使用。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/81e8a6dc7c6c49bc38b78805a617d8e6.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221229/65fdafe2a6c265868e9552808c56035d.jpg" alt="vue-cli@3封装多模块Vuex（vue项目模板封装系列）"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-64773.htm">Hive插入数据</a></p>
+                                        <p>下一个：<a href="/news/article-65377.htm">网页中的动态加载(js文件和css文件即换肤)</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-61172.htm" title="天通苑宠物医院哪家好（天通苑附近宠物寄养）">天通苑宠物医院哪家好（天通苑附近宠物寄养）</a></li>
+                        <li class="py-2"><a href="/news/article-35078.htm" title="同安宠物猫店（同安宠物猫店地址）">同安宠物猫店（同安宠物猫店地址）</a></li>
+                        <li class="py-2"><a href="/news/article-39655.htm" title="南京有领养宠物的地方吗在哪里（南京有没有宠物领养中心）">南京有领养宠物的地方吗在哪里（南京有没有宠物领养中心）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-free-ssr-node.htm" title="「12月31日」最高速度19.7M/S，2025年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接">「12月31日」最高速度19.7M/S，2025年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-40657.htm" title="领养宠物赚收益是真的吗吗（领养宠物赚收益是真的吗吗安全吗）">领养宠物赚收益是真的吗吗（领养宠物赚收益是真的吗吗安全吗）</a></li>
+                        <li class="py-2"><a href="/news/article-20764.htm" title="宠物零食制作教程风干（宠物自制风干零食）">宠物零食制作教程风干（宠物自制风干零食）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-free-ssr-node.htm" title="「12月25日」最高速度18.9M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅节点链接">「12月25日」最高速度18.9M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-32894.htm" title="动物接种疫苗多少钱一次打第一针 动物接种疫苗多少钱一次打第一针疫苗">动物接种疫苗多少钱一次打第一针 动物接种疫苗多少钱一次打第一针疫苗</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-high-speed-nodes.htm" title="「12月9日」最高速度21.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接">「12月9日」最高速度21.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-60005.htm" title="中国动物疫苗厂家排名前十有哪些（动物疫苗有哪些大厂家）">中国动物疫苗厂家排名前十有哪些（动物疫苗有哪些大厂家）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">91</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
