@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodessr.github.io/news/article-69834.htm" />
+    <title>golang对接阿里云私有Bucket上传图片、授权访问图片</title>
+        <meta name="description" content="1、为什么要设置私有bucket  公共读写：互联网上任何用户都可以对该 Bucket 内的文件进行访问，并且向该 Bucket 写入数据。这有可能造成您数据的外泄以及费用激增，若被人恶意写入违法信息" />
+        <link rel="icon" href="/assets/website/img/nodessr/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Node SSR节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodessr.github.io/news/article-69834.htm" />
+    <meta property="og:site_name" content="Node SSR节点订阅官网" />
+    <meta property="og:title" content="golang对接阿里云私有Bucket上传图片、授权访问图片" />
+    <meta property="og:image" content="https://nodessr.github.io/uploads/20240819-1/5c856fa11be2e036dab2f4538656ed00.webp" />
+        <meta property="og:release_date" content="2025-03-08T05:06:58" />
+    <meta property="og:updated_time" content="2025-03-08T05:06:58" />
+        <meta property="og:description" content="1、为什么要设置私有bucket  公共读写：互联网上任何用户都可以对该 Bucket 内的文件进行访问，并且向该 Bucket 写入数据。这有可能造成您数据的外泄以及费用激增，若被人恶意写入违法信息" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="golang对接阿里云私有Bucket上传图片、授权访问图片">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodessr/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMQ6KRWLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FMQ6KRWLLE');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                        <span>Node SSR</span>
+                        </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/website/img/nodessr/bg_5.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2"><a href="/">首页 <i class="fa fa-chevron-right"></i></a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯 <i class="fa fa-chevron-right"></i></a></span>
+                        <span>正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">golang对接阿里云私有Bucket上传图片、授权访问图片</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb ftco-no-pt py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <h2 id="1为什么要设置私有bucket">1、为什么要设置私有bucket</h2> <ul> <li><strong>公共读写</strong>：互联网上任何用户都可以对该 Bucket 内的文件进行访问，并且向该 Bucket 写入数据。这有可能造成您数据的外泄以及费用激增，若被人恶意写入违法信息还可能会侵害您的合法权益</li> <li><strong>私有</strong>：只有该存储空间的拥有者可以对该存储空间内的文件进行读写操作，其他人无法访问该存储空间内的文件</li> </ul> <p><strong>鉴于以上，公司要求将bucket设置为私有，只有授权的用户才能访问</strong></p> <h2 id="2准备">2、准备</h2> <h3 id="21-创建ram账户">2.1 创建RAM账户</h3> <p>开通OSS后账户，创建RAM账户，使用STS临时访问凭证访问OSS，<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://help.aliyun.com/document_detail/100624.htm?spm=5176.smartservice_service_robot-chat.0.0.1eea3cdaasIBTM"  target="_blank" rel="nofollow">具体参考阿里云文档</a></p> <p><strong>提示：在步骤四创建角色要将RAM角色赋予 AliyunOSSFullAccess 权限</strong> ，<br /> 因为此处没设置oss最高权限，我找了一天问题，大家<strong>谨记</strong>，写这篇博客也是记录一下我的填坑之路<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/d883f505b9a0402a78dd0fb52b728d3e.jpg" alt="golang对接阿里云私有Bucket上传图片、授权访问图片"></p> <h3 id="22-设置bucket">2.2 设置Bucket</h3> <ul> <li> <p>在对象存储中，Bucket列表创建私有Bucket<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f9dc478d1ba6cc16de43be8a71aae669.jpg" alt="golang对接阿里云私有Bucket上传图片、授权访问图片"></p> </li> <li> <p>然后在此Bucket授权刚才创建OSS账号id，授权操作为完全控制<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/8ed3196f7c0c3a972146072a1f490aad.jpg" alt="golang对接阿里云私有Bucket上传图片、授权访问图片"></p> </li> </ul> <h2 id="3上菜">3、上菜</h2> <h3 id="31-常量及其结构体">3.1 常量及其结构体</h3> <ul> <li>根据自己阿里云信息去配置</li> </ul> <pre><code class="language-go">const ( 	AccessKeyId     = "**"//oss账户AK 	AccessKeySecret = "**"//oss账户ST 	stsEndpoint     = "**"//sts.阿里云对象存储地址 	RoleArn         = "**"//创建角色用到的 	RoleSessionName = "**"//创建角色用到的 	BucketName      = "**" //填写Bucket名称，例如examplebucket 	Endpoint        = "**"//阿里云对象存储地址 	UploadOssUrl    = "**" //返回给前端oss上传地址 ) type StsTokenInfo struct { 	StatusCode      int    `json:"StatusCode"` 	AccessKeyId     string `json:"AccessKeyId"` 	AccessKeySecret string `json:"AccessKeySecret"` 	SecurityToken   string `json:"SecurityToken"` 	Expiration      string `json:"Expiration"` }  type StsErrorInfo struct { 	StatusCode   int    `json:"StatusCode"` 	ErrorCode    string `json:"ErrorCode"` 	ErrorMessage string `json:"ErrorMessage"` }</code></pre> <h3 id="32-获取sts临时用户信息">3.2 获取STS临时用户信息</h3> <pre><code class="language-go">package aliyun  import ( 	"fmt" 	openapi "github.com/alibabacloud-go/darabonba-openapi/client" 	sts "github.com/alibabacloud-go/sts-20150401/client" 	"github.com/alibabacloud-go/tea/tea" 	log "github.com/sirupsen/logrus" ) // //  GetAliyunStsInfo //  @Description: 获取STS临时用户信息 //  @param isReturnAll //  @return *sts.AssumeRoleResponseBody // func GetAliyunStsInfo() *sts.AssumeRoleResponseBody { 	return generateStsInfo() }  /**  * 生成STS临时用户信息  */ func generateStsInfo() *sts.AssumeRoleResponseBody { 	client, _err := createClient(tea.String(AccessKeyId), tea.String(AccessKeySecret)) 	if _err != nil { 		fmt.Print(_err.Error()) 	} 	assumeRoleRequest := &amp;sts.AssumeRoleRequest{ 		RoleArn:         tea.String(RoleArn), 		RoleSessionName: tea.String(RoleSessionName), 	} 	resp, err := client.AssumeRole(assumeRoleRequest) 	if err != nil { 		fmt.Print(err.Error()) 	} 	fmt.Printf("获取STS临时用户信息:%v", resp) 	log.Info("获取STS临时用户信息:", resp) 	return (*resp).Body }  /**  * 使用AK&amp;SK初始化账号Client  * @param accessKeyId  * @param accessKeySecret  * @return Client  * @throws Exception  */ func createClient(accessKeyId *string, accessKeySecret *string) (_result *sts.Client, _err error) { 	config := &amp;openapi.Config{ 		AccessKeyId:     accessKeyId, 		AccessKeySecret: accessKeySecret, 	} 	// 访问的域名 	config.Endpoint = tea.String(stsEndpoint) 	_result = &amp;sts.Client{} 	_result, _err = sts.NewClient(config) 	return _result, _err }</code></pre> <ul> <li>我是使用新版的SDK阿里云demo中，修改了一下，<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://next.api.aliyun.com/api/Sts/2015-04-01/AssumeRole?spm=a2c4g.11186623.0.0.45156dc1It2Bl2&amp;lang=GO&amp;params=%7B%7D&amp;sdkStyle=dara"  target="_blank" rel="nofollow">具体参考文档</a></li> <li>获取STS临时用户信息方法多个地方需要用到，所以我抽取出来供其他接口调用（比如授权访问就需要STS临时用户信息去生成signUrl）</li> </ul> <h3 id="33-接口调用">3.3 接口调用</h3> <h4 id="331不包含签名的sts临时用户信息">3.3.1不包含签名的STS临时用户信息</h4> <ul> <li>我这里用的gin框架，<strong>这个接口是不包含前端需要的签名（policy和Signature）的</strong>，需要前端使用oss插件（全部信息返回的写在另一个接口）</li> </ul> <pre><code class="language-go">/** 接口：获取sts用户 前端需要加载oss插件 不需要则去调用policy文件中AppAliyunPolicy */ func AppAliyunSts(c *gin.Context) { 	response := GetAliyunStsInfo() 	c.JSON(http.StatusOK, gin.H{ 		"code": 1, 		"data": response, 	}) 	return }</code></pre> <ul> <li>API调用，返回的信息<br /><img decoding="async" src="https://img-blog.csdnimg.cn/4ebd06351e164bd2a539b739ec0d793b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5a-85ryU5a2X5q-N,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述" loading="lazy"/></li> </ul> <h4 id="332含签名的sts临时用户信息">3.3.2含签名的STS临时用户信息</h4> <ul> <li>此接口好处就在前端不需要额外加载多余的包</li> </ul> <pre><code class="language-go">package aliyun  import ( 	"crypto/hmac" 	"crypto/sha1" 	"encoding/base64" 	"encoding/json" 	"fmt" 	"github.com/gin-gonic/gin" 	log "github.com/sirupsen/logrus" 	"hash" 	"io" 	"net/http" 	"time" ) /** 签名直传服务 用于小程序上传图片不用加载库 */ // 用户上传文件时指定的前缀。 //var upload_dir string = "user-dir/"  //过期时间3000秒 var expire_time int64 = 3000  type ConfigStruct struct { 	Expiration string     `json:"expiration"` 	Conditions [][]string `json:"conditions"` } type PolicyToken struct { 	StsTokenInfo 	Expire       int64  `json:"expire"` 	Signature    string `json:"signature"` 	Policy       string `json:"policy"` 	Directory    string `json:"dir"` 	UploadOssUrl string `json:"uploadOssUrl"` }  func AppAliyunPolicy(c *gin.Context) { 	uploadDir := c.DefaultQuery("dir", "user-dir/") 	//获取token2中的accessKeyId,accessKeySecret 	resp := GetAliyunStsInfo() 	log.Info(resp)  	now := time.Now().Unix() 	expire_end := now + expire_time 	var tokenExpire = getGmtIso8601(expire_end)  	//create post policy json 	var config ConfigStruct 	config.Expiration = tokenExpire 	var condition []string 	condition = append(condition, "starts-with") 	condition = append(condition, "$key") 	condition = append(condition, uploadDir) 	config.Conditions = append(config.Conditions, condition)  	//calucate signature 	result, err := json.Marshal(config) 	debyte := base64.StdEncoding.EncodeToString(result) 	h := hmac.New(func() hash.Hash { return sha1.New() }, []byte(*resp.Credentials.AccessKeySecret)) 	io.WriteString(h, debyte) 	signedStr := base64.StdEncoding.EncodeToString(h.Sum(nil))  	policyToken := &amp;PolicyToken{} 	policyToken.AccessKeyId = *resp.Credentials.AccessKeyId 	policyToken.AccessKeySecret = *resp.Credentials.AccessKeySecret 	policyToken.SecurityToken = *resp.Credentials.SecurityToken 	policyToken.Expiration = *resp.Credentials.Expiration 	policyToken.Expire = expire_end 	policyToken.Signature = string(signedStr) 	policyToken.Directory = uploadDir 	policyToken.Policy = string(debyte) 	policyToken.UploadOssUrl = UploadOssUrl 	if err != nil { 		fmt.Println("json err:", err) 	} 	c.JSON(http.StatusOK, gin.H{ 		"code": 1, 		"data": policyToken, 	}) 	return }  func getGmtIso8601(expireEnd int64) string { 	var tokenExpire = time.Unix(expireEnd, 0).UTC().Format("2006-01-02T15:04:05Z") 	return tokenExpire }</code></pre> <ul> <li>Get接口携带参数dir，指定放在哪个文件夹</li> <li>接口调用，返回信息<br /><img decoding="async" src="https://img-blog.csdnimg.cn/102a54cd8ecd44b38feffec56b1155eb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5a-85ryU5a2X5q-N,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述" loading="lazy"/></li> </ul> <h3 id="34-授权访问">3.4 授权访问</h3> <h4 id="341接口调用">3.4.1接口调用</h4> <ul> <li>阿里云提供了两种授权方式，<strong>URL授权</strong>和<strong>header头授权</strong>，我这里是图片授权所以选择了URL，图片需要授权携带签名参数才能请求到<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://help.aliyun.com/document_detail/59670.html"  target="_blank" rel="nofollow">具体参考文档</a></li> </ul> <pre><code class="language-go">package aliyun  import ( 	"fmt" 	"github.com/aliyun/aliyun-oss-go-sdk/oss" 	"github.com/gin-gonic/gin" 	"net/http" )  /** 图片授权访问 返回签名后的URL */ func GetSignURL(c *gin.Context) { 	accessKeyId := c.DefaultQuery("accessKeyId", "") 	accessKeySecret := c.DefaultQuery("accessKeySecret", "") 	securityToken := c.DefaultQuery("securityToken", "") 	fullImgPath := c.DefaultQuery("fullImgPath", "") //图片全路径 	//如果为空则去请求sts临时用户信息 	if accessKeyId == "" || accessKeySecret == "" || securityToken == "" { 		stsTokenInfo := GetAliyunStsInfo() 		accessKeyId = *stsTokenInfo.Credentials.AccessKeyId 		accessKeySecret = *stsTokenInfo.Credentials.AccessKeySecret 		securityToken = *stsTokenInfo.Credentials.SecurityToken 	}  	// 获取STS临时凭证后，您可以通过其中的安全令牌（SecurityToken）和临时访问密钥（AccessKeyId和AccessKeySecret）生成OSSClient。 	client, err := oss.New(Endpoint, accessKeyId, accessKeySecret, oss.SecurityToken(securityToken)) 	if err != nil { 		fmt.Print(err.Error()) 	} 	// 填写文件完整路径，例如exampledir/exampleobject.txt。文件完整路径中不能包含Bucket名称。 	objectName := fullImgPath 	// 获取存储空间。 	bucket, err := client.Bucket(BucketName) 	if err != nil { 		fmt.Print(err.Error()) 	}  	// 签名直传。 	signedURL, err := bucket.SignURL(objectName, oss.HTTPGet, 6000) 	if err != nil { 		fmt.Print(err.Error()) 	} 	c.JSON(http.StatusOK, gin.H{ 		"code": 1, 		"data": signedURL, 	}) }</code></pre> <ul> <li>这里有四个参数，前上个参数是请求STS临时用户获取到，前端传递过来的（此场景适用于<strong>上传图片后回显图片</strong>，就需要带签名的图片URL），如果前端没有传这三个参数，我们需要自己再去调用之前GetAliyunStsInfo()去生成，</li> <li>fullImgPath参数就是图片保存的全路径，填写文件完整路径，例如exampledir/exampleobject.txt。文件完整路径中<strong>不能包含Bucket名称</strong>。</li> </ul> <h4 id="342-api调用返回信息">3.4.2 API调用，返回信息</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e64250e5081bee7dad623f0a36f7f6b2.jpg" alt="golang对接阿里云私有Bucket上传图片、授权访问图片"></p> <ul> <li>如果没有授权，则会提示<br /><img decoding="async" src="https://img-blog.csdnimg.cn/a0ffc14b19c94d47a5d42f9f586bbc89.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5a-85ryU5a2X5q-N,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述" loading="lazy"/></li> </ul> <p>我碰到这个问题是因为没有给RAM角色设置OSS最高权限，<strong>谨记</strong></p> <ul> <li>如果过了有效期，则会提示</li> </ul> <pre><code class="language-xml">&lt;Error&gt; &lt;Code&gt;AccessDenied&lt;/Code&gt; &lt;Message&gt;Request has expired.&lt;/Message&gt; &lt;RequestId&gt;***&lt;/RequestId&gt; &lt;HostId&gt;****&lt;/HostId&gt; &lt;Expires&gt;2022-04-02T08:42:47.000Z&lt;/Expires&gt; &lt;ServerTime&gt;2022-04-03T03:56:52.000Z&lt;/ServerTime&gt; &lt;/Error&gt;</code></pre> <p>好了，以上接口经本人测试调通，耗时一天半，代码没什么，问题全出在配置权限上了，用来记录我的填坑之路</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69184.htm">动物疫苗价格排行榜最新图片高清大图 动物疫苗价格排行榜最新图片高清大图大全</a></p>
+                                        <p>下一个：<a href="/news/article-69835.htm">小动物医院情景剧（动物医院故事）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-44642.htm" title="北京农业大学动物医院电话地址是多少（北京农业大学动物医院电话地址是多少啊）">北京农业大学动物医院电话地址是多少（北京农业大学动物医院电话地址是多少啊）</a></li>
+                        <li class="py-2"><a href="/news/article-43633.htm" title="宠物粮行业分析怎么写的 宠物粮行业分析怎么写的啊">宠物粮行业分析怎么写的 宠物粮行业分析怎么写的啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-clash-v2ray-ss-ssr.htm" title="「3月2日」最高速度22.3M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅节点链接">「3月2日」最高速度22.3M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-35746.htm" title="动物疫苗接种方法及注意事项有哪些（动物疫苗接种途径有哪些）">动物疫苗接种方法及注意事项有哪些（动物疫苗接种途径有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-36104.htm" title="什么是Python高阶函数">什么是Python高阶函数</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-2-free-ssr-subscribe.htm" title="「2月2日」最高速度21.4M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅节点链接">「2月2日」最高速度21.4M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-40170.htm" title="开宠物店累不累呢（开宠物店累吗）">开宠物店累不累呢（开宠物店累吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-ssr-subscribe.htm" title="「3月3日」最高速度19.7M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅节点链接">「3月3日」最高速度19.7M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/news/article-47581.htm" title="小孩被猫爪子划破出血需要***吗（小孩被猫爪子划破出血需要***吗大概多少钱）">小孩被猫爪子划破出血需要***吗（小孩被猫爪子划破出血需要***吗大概多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-55463.htm" title="动物防疫站几点关门（动物防疫站周六日上班吗）">动物防疫站几点关门（动物防疫站周六日上班吗）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">82</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer">
+        <div class="container-fluid px-0 py-5 bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        Node SSR节点订阅官网 版权所有
+                        <br />
+                        Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodessr/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/assets/website/js/frontend/nodessr/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodessr/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
