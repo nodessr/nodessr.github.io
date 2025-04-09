@@ -1,4 +1,4 @@
-# 「4月6日」最高速度19.1M/S，2025年Shadowrocket/V2ray/Clash/SSR每天更新免费机场订阅节点链接  更新时间 2025-04-06 10:23:07
+# 「4月9日」最高速度18.8M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费机场订阅节点链接  更新时间 2025-04-09 09:32:55
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://nodessr.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://nodessr.github.io/uploads/2025/04/0-20250406.yaml
-- https://nodessr.github.io/uploads/2025/04/1-20250406.yaml
-- https://nodessr.github.io/uploads/2025/04/2-20250406.yaml
-- https://nodessr.github.io/uploads/2025/04/3-20250406.yaml
-- https://nodessr.github.io/uploads/2025/04/4-20250406.yaml
+- https://nodessr.github.io/uploads/2025/04/0-20250409.yaml
+- https://nodessr.github.io/uploads/2025/04/1-20250409.yaml
+- https://nodessr.github.io/uploads/2025/04/2-20250409.yaml
+- https://nodessr.github.io/uploads/2025/04/3-20250409.yaml
+- https://nodessr.github.io/uploads/2025/04/4-20250409.yaml
 
 ### V2ray订阅链接
 
-- https://nodessr.github.io/uploads/2025/04/0-20250406.txt
-- https://nodessr.github.io/uploads/2025/04/1-20250406.txt
-- https://nodessr.github.io/uploads/2025/04/2-20250406.txt
-- https://nodessr.github.io/uploads/2025/04/3-20250406.txt
-- https://nodessr.github.io/uploads/2025/04/4-20250406.txt
+- https://nodessr.github.io/uploads/2025/04/0-20250409.txt
+- https://nodessr.github.io/uploads/2025/04/1-20250409.txt
+- https://nodessr.github.io/uploads/2025/04/2-20250409.txt
+- https://nodessr.github.io/uploads/2025/04/3-20250409.txt
+- https://nodessr.github.io/uploads/2025/04/4-20250409.txt
 
 ### Sing-box订阅链接
 
-- https://nodessr.github.io/uploads/2025/04/20250406.json
+- https://nodessr.github.io/uploads/2025/04/20250409.json
 
 ## 更多clash节点订阅 ：
 
