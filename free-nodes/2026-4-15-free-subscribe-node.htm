@@ -270,19 +270,24 @@ Clash智能选择最佳节点，节省资源同时保证访问速度。</p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在 Sing-box 中设置多个 outbound 实现策略路由？</h5></div>
+    <div class="panel-heading"><h5>Sing-box 如何按端口匹配流量分配节点？</h5></div>
     <div class="panel-body">
-        在 sing-box 的配置中定义多个 outbound 对象并为 routing 模块配置 rules，将不同目的地或应用流量指向对应 outbound，从而实现分流、负载均衡或故障转移等复杂路由策略。<hr />    </div>
+        Sing-box 支持按端口匹配流量，将不同应用的流量分配到指定节点。结合策略组使用，可实现精准分流，优化访问速度和网络稳定性，提高整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的策略组如何根据节点延迟自动切换？</h5></div>
+    <div class="panel-heading"><h5>Sing-box 的域名规则如何实现分流？</h5></div>
     <div class="panel-body">
-        策略组会根据节点延迟和丢包率自动选择最优节点。结合路由规则，可保证国内流量直连、海外流量走最佳节点，提高访问速度和连接稳定性，优化整体网络体验。<hr />    </div>
+        Sing-box 支持按域名匹配流量，将不同网站或应用流量分配到指定节点。结合策略组自动切换低延迟节点，可优化访问速度，保证网络稳定性并提高整体体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 如何管理不同协议节点？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 如何设置流量配额限制？</h5></div>
     <div class="panel-body">
-        Nekobox 可以同时管理 Shadowsocks、VMess、Trojan 等多种协议节点。结合策略组和分流规则，可实现不同流量走不同节点，提升网络效率和管理便利性。<hr />    </div>
+        管理员可在 Hiddify Next 面板为每个用户设置流量上限或带宽限制。超过配额后可自动阻止或降速，保证服务器资源合理分配，防止单用户占用过多带宽。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 订阅更新后节点消失，如何恢复？</h5></div>
+    <div class="panel-body">
+        先检查订阅源是否更改格式或被下架，尝试重新粘贴订阅链接并手动刷新；若仍缺失，联系订阅提供方确认是否停用某些节点或使用了新的访问权限机制（例如 token 验证）。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hysteria2 的 QUIC 多路复用在游戏中有什么优势？</h5></div>
@@ -295,29 +300,24 @@ Clash智能选择最佳节点，节省资源同时保证访问速度。</p>
         Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验和管理效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekobox 如何管理不同协议节点？</h5></div>
+    <div class="panel-body">
+        Nekobox 可以同时管理 Shadowsocks、VMess、Trojan 等多种协议节点。结合策略组和分流规则，可实现不同流量走不同节点，提升网络效率和管理便利性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的策略组如何根据节点延迟自动切换？</h5></div>
+    <div class="panel-body">
+        策略组会根据节点延迟和丢包率自动选择最优节点。结合路由规则，可保证国内流量直连、海外流量走最佳节点，提高访问速度和连接稳定性，优化整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何在 Sing-box 中设置多个 outbound 实现策略路由？</h5></div>
+    <div class="panel-body">
+        在 sing-box 的配置中定义多个 outbound 对象并为 routing 模块配置 rules，将不同目的地或应用流量指向对应 outbound，从而实现分流、负载均衡或故障转移等复杂路由策略。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>如何使用 Docker 部署 sing-box 或 v2ray？</h5></div>
     <div class="panel-body">
-        选择官方或社区维护的 Docker 镜像，编写 docker-compose.yml 指定配置文件挂载、网络模式与端口映射。使用容器管理可以隔离运行环境、便于日志采集并与反向代理（如 Nginx）协同工作。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何按端口匹配流量分配节点？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持按端口匹配流量，将不同应用的流量分配到指定节点。结合策略组使用，可实现精准分流，优化访问速度和网络稳定性，提高整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 订阅更新后节点消失，如何恢复？</h5></div>
-    <div class="panel-body">
-        先检查订阅源是否更改格式或被下架，尝试重新粘贴订阅链接并手动刷新；若仍缺失，联系订阅提供方确认是否停用某些节点或使用了新的访问权限机制（例如 token 验证）。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何设置流量配额限制？</h5></div>
-    <div class="panel-body">
-        管理员可在 Hiddify Next 面板为每个用户设置流量上限或带宽限制。超过配额后可自动阻止或降速，保证服务器资源合理分配，防止单用户占用过多带宽。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 的域名规则如何实现分流？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持按域名匹配流量，将不同网站或应用流量分配到指定节点。结合策略组自动切换低延迟节点，可优化访问速度，保证网络稳定性并提高整体体验。    </div>
+        选择官方或社区维护的 Docker 镜像，编写 docker-compose.yml 指定配置文件挂载、网络模式与端口映射。使用容器管理可以隔离运行环境、便于日志采集并与反向代理（如 Nginx）协同工作。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -346,16 +346,16 @@ Clash智能选择最佳节点，节省资源同时保证访问速度。</p>
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-3-17-free-subscribe-node.htm" title="「3月17日」最高速度19.6M/S，2025年SSR节点/Trojan节点/V2ray节点/Shadowrocket节点/Singbox节点/Clash节点每天更新免费机场订阅节点链接">「3月17日」最高速度19.6M/S，2025年SSR节点/Trojan节点/V2ray节点/Shadowrocket节点/Singbox节点/Clash节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-25-free-high-speed-nodes.htm" title="「3月25日」最高速度22.6M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Trojan节点/Clash节点/Singbox节点每天更新免费机场订阅节点链接">「3月25日」最高速度22.6M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Trojan节点/Clash节点/Singbox节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-29-clash-v2ray-ss-ssr.htm" title="「3月29日」最高速度18.9M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/Trojan节点/SSR节点/Singbox节点每天更新免费机场订阅节点链接">「3月29日」最高速度18.9M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/Trojan节点/SSR节点/Singbox节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-11-clash-v2ray-ss-ssr.htm" title="「3月11日」最高速度22.8M/S，2025年Singbox节点/SSR节点/V2ray节点/Clash节点/Trojan节点/Shadowrocket节点每天更新免费机场订阅节点链接">「3月11日」最高速度22.8M/S，2025年Singbox节点/SSR节点/V2ray节点/Clash节点/Trojan节点/Shadowrocket节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-15-free-node-subscribe-links.htm" title="「3月15日」最高速度21.5M/S，2025年V2ray节点/Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/Clash节点每天更新免费机场订阅节点链接">「3月15日」最高速度21.5M/S，2025年V2ray节点/Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/Clash节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-8-free-ssr-node.htm" title="「3月8日」最高速度21.3M/S，2025年SSR节点/Shadowrocket节点/Singbox节点/Trojan节点/Clash节点/V2ray节点每天更新免费机场订阅节点链接">「3月8日」最高速度21.3M/S，2025年SSR节点/Shadowrocket节点/Singbox节点/Trojan节点/Clash节点/V2ray节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-18-node-share.htm" title="「3月18日」最高速度19.5M/S，2025年Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点每天更新免费机场订阅节点链接">「3月18日」最高速度19.5M/S，2025年Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-9-free-high-speed-nodes.htm" title="「4月9日」最高速度20.6M/S，2025年SSR节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点/Clash节点每天更新免费机场订阅节点链接">「4月9日」最高速度20.6M/S，2025年SSR节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点/Clash节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-20-free-node-subscribe.htm" title="「3月20日」最高速度18.1M/S，2025年Clash节点/Singbox节点/V2ray节点/Trojan节点/SSR节点/Shadowrocket节点每天更新免费机场订阅节点链接">「3月20日」最高速度18.1M/S，2025年Clash节点/Singbox节点/V2ray节点/Trojan节点/SSR节点/Shadowrocket节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-10-node-share.htm" title="「3月10日」最高速度18M/S，2025年Shadowrocket节点/Trojan节点/SSR节点/Clash节点/Singbox节点/V2ray节点每天更新免费机场订阅节点链接">「3月10日」最高速度18M/S，2025年Shadowrocket节点/Trojan节点/SSR节点/Clash节点/Singbox节点/V2ray节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-11-free-ssr-subscribe.htm" title="「5月11日」最高速度19.1M/S，2025年V2ray节点/Shadowrocket节点/Singbox节点/Clash节点/SSR节点/Trojan节点每天更新免费机场订阅节点链接">「5月11日」最高速度19.1M/S，2025年V2ray节点/Shadowrocket节点/Singbox节点/Clash节点/SSR节点/Trojan节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-29-free-ssr-subscribe.htm" title="「4月29日」最高速度20.5M/S，2025年Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点每天更新免费机场订阅节点链接">「4月29日」最高速度20.5M/S，2025年Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-8-free-ssr-subscribe.htm" title="「5月8日」最高速度22.4M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/Trojan节点/Singbox节点/SSR节点每天更新免费机场订阅节点链接">「5月8日」最高速度22.4M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/Trojan节点/Singbox节点/SSR节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-23-clash-v2ray-ss-ssr.htm" title="「4月23日」最高速度21.8M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点/Trojan节点每天更新免费机场订阅节点链接">「4月23日」最高速度21.8M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点/Trojan节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-17-free-node-subscribe.htm" title="「4月17日」最高速度23M/S，2025年Clash节点/SSR节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费机场订阅节点链接">「4月17日」最高速度23M/S，2025年Clash节点/SSR节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-22-free-node-subscribe.htm" title="「4月22日」最高速度21.1M/S，2025年Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费机场订阅节点链接">「4月22日」最高速度21.1M/S，2025年Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-28-node-share.htm" title="「4月28日」最高速度19.8M/S，2025年Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点/Trojan节点每天更新免费机场订阅节点链接">「4月28日」最高速度19.8M/S，2025年Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点/Trojan节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-21-node-share-links.htm" title="「4月21日」最高速度18.8M/S，2025年Trojan节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅节点链接">「4月21日」最高速度18.8M/S，2025年Trojan节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-24-node-share.htm" title="「4月24日」最高速度22.5M/S，2025年V2ray节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费机场订阅节点链接">「4月24日」最高速度22.5M/S，2025年V2ray节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-1-node-share.htm" title="「5月1日」最高速度21.4M/S，2025年Singbox节点/Trojan节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点每天更新免费机场订阅节点链接">「5月1日」最高速度21.4M/S，2025年Singbox节点/Trojan节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -367,10 +367,10 @@ Clash智能选择最佳节点，节省资源同时保证访问速度。</p>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">11</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                     </ul>
     </div>

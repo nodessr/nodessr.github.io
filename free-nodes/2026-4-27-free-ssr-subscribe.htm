@@ -394,34 +394,9 @@ systemctl </span><span><span class="hljs-built_in">enable</span></span><span> v2
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 的规则文件如何支持广告屏蔽？</h5></div>
-    <div class="panel-body">
-        规则文件可添加广告域名或 URL 列表，将请求重定向或阻断。结合策略组和自动更新，Surfboard 可实现全局广告屏蔽，提高浏览体验并节省带宽。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 支持测速功能吗？</h5></div>
-    <div class="panel-body">
-        支持。WinXray 提供节点延迟测速功能，可检测每个节点的响应时间与可用性。测速结果能帮助用户选择最快线路，也能排除无效或不稳定的节点，提高整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 为什么在 iOS 上广受欢迎？</h5></div>
-    <div class="panel-body">
-        Potatso Lite 是一款操作简洁的代理工具，支持多种代理协议和自定义规则。它适合不需要复杂配置的用户，界面友好、性能稳定，非常适合日常轻量使用和应用代理。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow 的 TUN 模式是否支持全局游戏加速？</h5></div>
-    <div class="panel-body">
-        支持。TUN 模式拦截系统 IP 层流量，实现全局代理，确保游戏和其他应用的 UDP/TCP 流量都走代理节点，从而降低延迟，提高游戏体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的 Rule Provider 自动更新规则如何操作？</h5></div>
     <div class="panel-body">
         Rule Provider 可以通过远程 URL 自动下载规则和节点，定期更新无需手动操作。结合策略组使用，可保持节点和分流规则最新，提高访问速度和网络可用性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 如何实现智能分流？</h5></div>
-    <div class="panel-body">
-        PassWall2 通过自定义规则文件控制流量走向。可根据目标域名、国家或 IP 范围自动判断走代理或直连。用户还能加载社区规则，实现类似 Clash 的高效路由分流。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 如何实现智能分流？</h5></div>
@@ -434,14 +409,39 @@ systemctl </span><span><span class="hljs-built_in">enable</span></span><span> v2
         AEAD 加密可防止数据篡改、重放攻击和流量特征泄露。在高封锁环境下保证节点可用，提升数据安全和连接稳定性，同时降低被检测风险，确保长期安全访问。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 为什么在 iOS 上广受欢迎？</h5></div>
+    <div class="panel-body">
+        Potatso Lite 是一款操作简洁的代理工具，支持多种代理协议和自定义规则。它适合不需要复杂配置的用户，界面友好、性能稳定，非常适合日常轻量使用和应用代理。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess 配置 TLS+WebSocket 有哪些性能优势？</h5></div>
+    <div class="panel-body">
+        TLS+WebSocket 可伪装 HTTPS 流量，增强抗封锁能力，同时降低被检测风险。结合策略组和节点延迟检测，可保证访问速度和连接稳定性，特别适合视频和游戏场景。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Mellow 的 TUN 模式是否支持全局游戏加速？</h5></div>
+    <div class="panel-body">
+        支持。TUN 模式拦截系统 IP 层流量，实现全局代理，确保游戏和其他应用的 UDP/TCP 流量都走代理节点，从而降低延迟，提高游戏体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 多策略组如何管理大量节点？</h5></div>
     <div class="panel-body">
         多策略组可将节点按地区、延迟或用途分类，并结合规则文件自动分流流量。这样可快速选择最优节点，提高访问速度和稳定性，同时优化节点管理和维护效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 配置 TLS+WebSocket 有哪些性能优势？</h5></div>
+    <div class="panel-heading"><h5>Surfboard 的规则文件如何支持广告屏蔽？</h5></div>
     <div class="panel-body">
-        TLS+WebSocket 可伪装 HTTPS 流量，增强抗封锁能力，同时降低被检测风险。结合策略组和节点延迟检测，可保证访问速度和连接稳定性，特别适合视频和游戏场景。    </div>
+        规则文件可添加广告域名或 URL 列表，将请求重定向或阻断。结合策略组和自动更新，Surfboard 可实现全局广告屏蔽，提高浏览体验并节省带宽。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 支持测速功能吗？</h5></div>
+    <div class="panel-body">
+        支持。WinXray 提供节点延迟测速功能，可检测每个节点的响应时间与可用性。测速结果能帮助用户选择最快线路，也能排除无效或不稳定的节点，提高整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 如何实现智能分流？</h5></div>
+    <div class="panel-body">
+        PassWall2 通过自定义规则文件控制流量走向。可根据目标域名、国家或 IP 范围自动判断走代理或直连。用户还能加载社区规则，实现类似 Clash 的高效路由分流。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -470,16 +470,16 @@ systemctl </span><span><span class="hljs-built_in">enable</span></span><span> v2
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-4-14-free-high-speed-nodes.htm" title="「4月14日」最高速度18.5M/S，2025年Trojan节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点每天更新免费机场订阅节点链接">「4月14日」最高速度18.5M/S，2025年Trojan节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-29-free-ssr-subscribe.htm" title="「4月29日」最高速度20.5M/S，2025年Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点每天更新免费机场订阅节点链接">「4月29日」最高速度20.5M/S，2025年Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-18-free-node-subscribe-links.htm" title="「4月18日」最高速度22.4M/S，2025年Clash节点/Trojan节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅节点链接">「4月18日」最高速度22.4M/S，2025年Clash节点/Trojan节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-1-node-share.htm" title="「5月1日」最高速度21.4M/S，2025年Singbox节点/Trojan节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点每天更新免费机场订阅节点链接">「5月1日」最高速度21.4M/S，2025年Singbox节点/Trojan节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-3-free-subscribe-node.htm" title="「5月3日」最高速度18M/S，2025年Singbox节点/Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点每天更新免费机场订阅节点链接">「5月3日」最高速度18M/S，2025年Singbox节点/Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-13-free-ssr-subscribe.htm" title="「4月13日」最高速度19M/S，2025年V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Trojan节点/Clash节点每天更新免费机场订阅节点链接">「4月13日」最高速度19M/S，2025年V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Trojan节点/Clash节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-21-node-share-links.htm" title="「4月21日」最高速度18.8M/S，2025年Trojan节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅节点链接">「4月21日」最高速度18.8M/S，2025年Trojan节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-15-free-subscribe-node.htm" title="「4月15日」最高速度21.7M/S，2025年SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/Clash节点每天更新免费机场订阅节点链接">「4月15日」最高速度21.7M/S，2025年SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/Clash节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-16-node-share.htm" title="「4月16日」最高速度21M/S，2025年Clash节点/Trojan节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅节点链接">「4月16日」最高速度21M/S，2025年Clash节点/Trojan节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-28-node-share.htm" title="「4月28日」最高速度19.8M/S，2025年Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点/Trojan节点每天更新免费机场订阅节点链接">「4月28日」最高速度19.8M/S，2025年Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点/Trojan节点每天更新免费机场订阅节点链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-4-19-free-node-subscribe.htm" title="「4月19日」最高速度20M/S，2025年Singbox节点/Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点每天更新免费机场订阅节点链接">「4月19日」最高速度20M/S，2025年Singbox节点/Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点每天更新免费机场订阅节点链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-17-free-node-subscribe.htm" title="「4月17日」最高速度23M/S，2025年Clash节点/SSR节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费机场订阅节点链接">「4月17日」最高速度23M/S，2025年Clash节点/SSR节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-29-free-ssr-subscribe.htm" title="「4月29日」最高速度20.5M/S，2025年Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点每天更新免费机场订阅节点链接">「4月29日」最高速度20.5M/S，2025年Shadowrocket节点/SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-25-node-share.htm" title="「4月25日」最高速度18.1M/S，2025年Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Trojan节点每天更新免费机场订阅节点链接">「4月25日」最高速度18.1M/S，2025年Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Trojan节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-1-node-share.htm" title="「5月1日」最高速度21.4M/S，2025年Singbox节点/Trojan节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点每天更新免费机场订阅节点链接">「5月1日」最高速度21.4M/S，2025年Singbox节点/Trojan节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-9-free-ssr-subscribe.htm" title="「5月9日」最高速度20.8M/S，2025年Clash节点/SSR节点/Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅节点链接">「5月9日」最高速度20.8M/S，2025年Clash节点/SSR节点/Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-30-free-subscribe-node.htm" title="「4月30日」最高速度22M/S，2025年SSR节点/Trojan节点/V2ray节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅节点链接">「4月30日」最高速度22M/S，2025年SSR节点/Trojan节点/V2ray节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-12-free-node-subscribe-links.htm" title="「4月12日」最高速度18.5M/S，2025年Trojan节点/SSR节点/V2ray节点/Shadowrocket节点/Clash节点/Singbox节点每天更新免费机场订阅节点链接">「4月12日」最高速度18.5M/S，2025年Trojan节点/SSR节点/V2ray节点/Shadowrocket节点/Clash节点/Singbox节点每天更新免费机场订阅节点链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-6-free-high-speed-nodes.htm" title="「5月6日」最高速度19.9M/S，2025年Clash节点/Shadowrocket节点/Trojan节点/SSR节点/Singbox节点/V2ray节点每天更新免费机场订阅节点链接">「5月6日」最高速度19.9M/S，2025年Clash节点/Shadowrocket节点/Trojan节点/SSR节点/Singbox节点/V2ray节点每天更新免费机场订阅节点链接</a></li>
                     </ul>
     </div>
 </div>
@@ -491,10 +491,10 @@ systemctl </span><span><span class="hljs-built_in">enable</span></span><span> v2
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
+                <h4><span class="badge" style="float: right;">11</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                     </ul>
     </div>
